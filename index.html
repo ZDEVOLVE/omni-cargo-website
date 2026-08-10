@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omni Cargo — Mombasa ↔ Nairobi Cargo Transport | Fast, Secure, Tracked</title>
+<meta name="description" content="Omni Cargo moves medium loose cargo between Mombasa and Nairobi, and anywhere within Nairobi — fast, secure, affordable. Book a shipment, track your cargo, get a quote in minutes.">
+<meta name="keywords" content="cargo transport Kenya, Mombasa Nairobi cargo, pickup cargo Nairobi, loose cargo transporter, cargo tracking Kenya">
+<link rel="canonical" href="https://omnicargo.co.ke/">
+<meta name="theme-color" content="#0A1626">
+<link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Omni Cargo">
+<meta property="og:title" content="Omni Cargo — Mombasa ↔ Nairobi. Moved.">
+<meta property="og:description" content="Fast, secure, affordable cargo transportation between Mombasa and Nairobi, and anywhere within Nairobi.">
+<meta property="og:url" content="https://omnicargo.co.ke/">
+<meta property="og:image" content="https://omnicargo.co.ke/assets/og/omni-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://omnicargo.co.ke/assets/og/omni-og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MovingCompany",
+  "name": "Omni Cargo",
+  "url": "https://omnicargo.co.ke/",
+  "logo": "https://omnicargo.co.ke/assets/favicon/icon-512.png",
+  "image": "https://omnicargo.co.ke/assets/og/omni-og.png",
+  "description": "Cargo transportation between Mombasa and Nairobi and within Nairobi — pickup fleet, tracked shipments.",
+  "telephone": "+254700000000",
+  "email": "hello@omnicargo.co.ke",
+  "address": [
+    {"@type": "PostalAddress", "streetAddress": "Enterprise Road, Industrial Area", "addressLocality": "Nairobi", "addressCountry": "KE"},
+    {"@type": "PostalAddress", "streetAddress": "Shimanzi Road, Shimanzi", "addressLocality": "Mombasa", "addressCountry": "KE"}
+  ],
+  "openingHoursSpecification": {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:00", "closes": "19:00"},
+  "areaServed": ["Mombasa", "Nairobi"]
+}
+</script>
+<!-- GA4 placeholder: <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,700;10..72,800;10..72,900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --surface:#0A1626; --surface-2:#0F2035; --elevated:#142A44; --elevated-hi:#1B3554;
+  --accent:#FF6B1A; --accent-2:#FFB347; --accent-soft:rgba(255,107,26,.16);
+  --accent-glow:0 0 28px rgba(255,107,26,.45);
+  --text:#EEF3F9; --text-mute:#8CA3BC; --text-faint:#5D7590;
+  --hairline:rgba(238,243,249,.08); --hairline-hi:rgba(238,243,249,.18);
+  --shadow-card:0 12px 40px rgba(3,8,16,.5); --shadow-cta:0 8px 28px rgba(255,107,26,.35);
+  --whatsapp:#25D366;
+  --t-mega:clamp(64px,10vw,168px); --t-h1:clamp(44px,6.5vw,96px); --t-h2:clamp(34px,4.5vw,64px);
+  --t-h3:clamp(24px,3vw,38px); --t-h4:clamp(19px,2vw,24px);
+  --t-body-lg:clamp(17px,1.6vw,20px);
+  --pad:clamp(20px,5vw,72px); --sect:clamp(88px,10vw,160px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--surface);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#081020}
+
+h1,h2,h3,.display{font-family:'Big Shoulders',sans-serif;text-transform:uppercase;font-weight:800}
+h1 em,h2 em,h3 em,.display em{font-style:normal;color:var(--accent)}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--accent);flex:none}
+.eyebrow.center{justify-content:center}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:1320px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+section{position:relative}
+
+/* grain */
+.grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.045;mix-blend-mode:overlay}
+
+/* ============ BUTTONS ============ */
+.btn-primary,.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16px/1 'IBM Plex Sans',sans-serif;padding:16px 30px;border-radius:999px;cursor:pointer;border:0;will-change:transform;transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s ease,border-color .25s ease,color .25s ease,background-color .25s ease}
+.btn-primary{background:var(--accent);color:#081020;box-shadow:var(--shadow-cta)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(255,107,26,.5)}
+.btn-primary:active{transform:translateY(0)}
+.btn-ghost{border:1px solid var(--hairline-hi);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn-ghost:active{transform:translateY(0)}
+.btn-primary:focus-visible,.btn-ghost:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
+.arrow-link{display:inline-flex;align-items:center;gap:8px;font:600 15px 'IBM Plex Sans',sans-serif;color:var(--accent)}
+.arrow-link svg{transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.arrow-link:hover svg{transform:translateX(5px)}
+
+/* ============ LOADER ============ */
+#loader{position:fixed;inset:0;z-index:100;background:var(--surface);display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s ease}
+#loader.done{opacity:0;visibility:hidden}
+#loader svg{width:88px;height:88px}
+#loader .ring{stroke-dasharray:120;stroke-dashoffset:120;animation:draw 0.9s cubic-bezier(.65,0,.35,1) forwards}
+#loader .route{stroke-dasharray:60;stroke-dashoffset:60;animation:draw 0.7s cubic-bezier(.65,0,.35,1) .35s forwards}
+#loader .head{opacity:0;animation:pop .3s ease .95s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+
+/* ============ NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(10,22,38,.72);border-bottom:1px solid var(--hairline)}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 var(--pad);height:74px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:11px;flex:none}
+.brand img{width:34px;height:34px}
+.brand .wm{font-family:'Big Shoulders',sans-serif;font-weight:800;font-size:23px;letter-spacing:.02em;line-height:1;color:var(--text)}
+.brand .wm small{display:block;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:9.5px;letter-spacing:.34em;color:var(--text-mute);margin-top:2px}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{font:500 14.5px 'IBM Plex Sans',sans-serif;color:var(--text-mute);position:relative;padding:6px 0;transition:color .2s ease}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text)}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.nav-cta .btn-ghost{padding:11px 20px;font-size:14px}
+.nav-cta .btn-primary{padding:12px 22px;font-size:14px}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;flex-direction:column;justify-content:center;gap:6px;align-items:center}
+.burger span{display:block;width:24px;height:2px;background:var(--text);transition:transform .3s ease,opacity .3s ease}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:49;background:rgba(8,16,32,.98);padding:110px var(--pad) 40px;flex-direction:column;gap:6px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Big Shoulders',sans-serif;font-weight:800;text-transform:uppercase;font-size:34px;padding:10px 0;border-bottom:1px solid var(--hairline);color:var(--text)}
+.mobile-menu a:hover{color:var(--accent)}
+.mobile-menu .mm-cta{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+.mobile-menu .mm-cta a{border:0;font-family:'IBM Plex Sans',sans-serif;text-transform:none;font-size:16px}
+
+/* ============ HERO ============ */
+#hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-bg,.hero-mid{position:absolute;inset:0;pointer-events:none}
+.hero-bg{z-index:0}
+.hero-bg img{width:100%;height:115%;object-fit:cover;filter:saturate(.85) contrast(1.08) brightness(.62);will-change:transform}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,38,.55) 0%,rgba(10,22,38,.35) 40%,var(--surface) 96%),radial-gradient(ellipse 80% 60% at 70% 20%,rgba(255,107,26,.12),transparent 60%)}
+.hero-mid{z-index:1;display:flex;align-items:flex-start;justify-content:flex-end}
+.hero-mid svg{width:min(58vw,780px);height:auto;margin:-6% -8% 0 0;opacity:.14;will-change:transform}
+.hero-content{position:relative;z-index:3;max-width:1320px;width:100%;margin:0 auto;padding:150px var(--pad) 0}
+.hero-eyebrow{margin-bottom:22px}
+#hero h1{font-size:var(--t-mega);line-height:.92;letter-spacing:-.005em;font-weight:900;max-width:12ch}
+.hero-sub{max-width:560px;margin-top:26px;font-size:var(--t-body-lg);font-weight:300;color:var(--text-mute)}
+.hero-sub b{color:var(--text);font-weight:500}
+.hero-ctas{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+.hero-foot{position:relative;z-index:3;margin-top:64px;border-top:1px solid var(--hairline);background:rgba(8,16,32,.5);backdrop-filter:blur(6px)}
+.ticker{overflow:hidden;white-space:nowrap;padding:14px 0;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.ticker-track{display:inline-flex;gap:56px;padding-right:56px;animation:tick 36s linear infinite;will-change:transform}
+.ticker span{font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.14em;color:var(--text-faint)}
+.ticker b{color:var(--text-mute);font-weight:500}
+.ticker i{font-style:normal;color:var(--accent)}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ============ TRUST STRIP ============ */
+#trust{padding:64px 0;border-bottom:1px solid var(--hairline)}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.stat .num{font-family:'Big Shoulders',sans-serif;font-weight:800;font-size:clamp(38px,4.6vw,64px);line-height:1;letter-spacing:-.01em}
+.stat .num i{font-style:normal;color:var(--accent);font-size:.55em;vertical-align:.28em;margin-left:2px}
+.stat .lbl{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-faint);margin-top:8px}
+
+/* ============ ROUTE NARRATIVE ============ */
+#route{background:var(--surface-2)}
+#route-spacer{height:440vh;position:relative}
+#route-pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:stretch}
+.route-inner{max-width:1320px;margin:0 auto;padding:0 var(--pad);width:100%;display:grid;grid-template-columns:minmax(240px,340px) 1fr;gap:clamp(32px,6vw,96px);align-items:center}
+.route-rail{height:86vh;display:flex;align-items:center;justify-content:center;position:relative}
+.route-rail svg{height:100%;width:auto;overflow:visible}
+.route-base{stroke:var(--hairline-hi);stroke-width:2;stroke-dasharray:3 7;fill:none}
+.route-progress{stroke:url(#routeGrad);stroke-width:3.5;fill:none;stroke-linecap:round}
+.wp{fill:var(--surface);stroke:var(--text-faint);stroke-width:2}
+.wp-label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;fill:var(--text-faint);text-transform:uppercase}
+.wp-km{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;fill:var(--text-faint);opacity:.65}
+#truck{will-change:transform}
+.route-copy{position:relative;min-height:60vh;display:flex;flex-direction:column;justify-content:center}
+.route-head{margin-bottom:40px}
+.route-head h2{font-size:var(--t-h2);line-height:1}
+.route-km{font-family:'IBM Plex Mono',monospace;color:var(--text-mute);font-size:13px;letter-spacing:.16em;margin-top:14px}
+.route-km b{color:var(--accent);font-weight:500}
+.route-cards{position:relative;min-height:340px}
+.route-card{position:absolute;inset:0;opacity:0;visibility:hidden;will-change:transform}
+.route-card.rc-first{opacity:1;visibility:visible}
+.route-card .ph{border-radius:16px;overflow:hidden;position:relative;height:200px;box-shadow:var(--shadow-card)}
+.route-card .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.08) brightness(.92)}
+.route-card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,38,.15),rgba(10,22,38,.55))}
+.route-card .rc-meta{display:flex;gap:18px;align-items:center;margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.16em;color:var(--text-faint);text-transform:uppercase}
+.route-card .rc-meta b{color:var(--accent);font-weight:500}
+.route-card h3{font-size:var(--t-h3);margin-top:10px}
+.route-card p{color:var(--text-mute);margin-top:10px;max-width:52ch}
+
+/* mobile route fallback */
+#route-mobile{display:none;padding:var(--sect) 0}
+#route-mobile .m-stage{display:flex;gap:18px;margin-top:34px}
+#route-mobile .m-line{flex:none;width:20px;display:flex;flex-direction:column;align-items:center}
+#route-mobile .m-dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);flex:none}
+#route-mobile .m-conn{flex:1;width:2px;border-left:2px dashed var(--hairline-hi);margin:6px 0}
+#route-mobile .m-body{padding-bottom:34px}
+#route-mobile .m-body .ph{border-radius:12px;overflow:hidden;position:relative;height:150px;margin-bottom:14px}
+#route-mobile .m-body .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.08) brightness(.92)}
+#route-mobile .m-body .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,38,.15),rgba(10,22,38,.5))}
+#route-mobile .m-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--text-faint);text-transform:uppercase}
+#route-mobile .m-meta b{color:var(--accent);font-weight:500}
+#route-mobile h3{font-size:24px;margin-top:6px}
+#route-mobile p{color:var(--text-mute);font-size:15px;margin-top:8px}
+
+/* ============ SERVICES ============ */
+#services{padding:var(--sect) 0}
+.sect-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:52px;flex-wrap:wrap}
+.sect-head h2{font-size:var(--t-h2);line-height:1;max-width:16ch}
+.sect-head p{max-width:420px;color:var(--text-mute)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{background:var(--elevated);border:1px solid var(--hairline);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-card);display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s ease;will-change:transform}
+.svc-card:hover{transform:translateY(-6px);border-color:var(--hairline-hi)}
+.svc-card .ph{height:190px;position:relative;overflow:hidden}
+.svc-card .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.08) brightness(.92);transition:transform .6s cubic-bezier(.22,1,.36,1);will-change:transform}
+.svc-card:hover .ph img{transform:scale(1.05)}
+.svc-card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,38,.1),rgba(20,42,68,.85) 96%)}
+.svc-body{padding:26px 26px 30px;display:flex;flex-direction:column;flex:1}
+.svc-body .mono-tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
+.svc-body h3{font-size:26px;margin-top:10px}
+.svc-body p{color:var(--text-mute);font-size:15px;margin-top:10px;flex:1}
+.svc-body .arrow-link{margin-top:20px}
+
+/* ============ HOW IT WORKS ============ */
+#how{padding:var(--sect) 0;background:var(--surface-2);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.how-step{position:relative;padding:0 26px 0 0}
+.how-step + .how-step{padding-left:26px}
+.how-step::before{content:"";position:absolute;top:7px;left:calc(26px + 14px);right:0;border-top:2px dashed var(--hairline-hi)}
+.how-step:first-child::before{left:14px}
+.how-step:last-child::before{right:auto;width:0}
+.how-dot{width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft);position:relative;z-index:1}
+.how-num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--text-faint);margin-top:22px}
+.how-step h3{font-size:22px;margin-top:8px}
+.how-step p{color:var(--text-mute);font-size:14.5px;margin-top:8px}
+
+/* ============ FLEET TEASER ============ */
+#fleet{padding:var(--sect) 0}
+.fleet-split{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.fleet-ph{border-radius:20px;overflow:hidden;position:relative;box-shadow:var(--shadow-card);aspect-ratio:4/3}
+.fleet-ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.08) brightness(.92)}
+.fleet-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(10,22,38,.05),rgba(10,22,38,.55))}
+.fleet-badge{position:absolute;bottom:18px;left:18px;background:rgba(8,16,32,.82);backdrop-filter:blur(8px);border:1px solid var(--hairline-hi);border-radius:12px;padding:12px 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--text-mute)}
+.fleet-badge b{color:var(--accent);font-weight:500}
+.fleet-copy h2{font-size:var(--t-h2);line-height:1}
+.fleet-copy > p{color:var(--text-mute);margin-top:18px;max-width:46ch}
+.spec-table{margin-top:30px;border-top:1px dashed var(--hairline-hi)}
+.spec-row{display:flex;justify-content:space-between;gap:18px;padding:13px 2px;border-bottom:1px dashed var(--hairline-hi);font-size:14.5px}
+.spec-row span{color:var(--text-mute)}
+.spec-row b{font-family:'IBM Plex Mono',monospace;font-weight:500;color:var(--text);letter-spacing:.04em}
+.fleet-copy .btn-ghost{margin-top:30px}
+
+/* ============ TRACK TEASER ============ */
+#track-teaser{padding:var(--sect) 0;background:linear-gradient(180deg,var(--surface-2),var(--surface));border-top:1px solid var(--hairline);text-align:center}
+#track-teaser h2{font-size:var(--t-h2)}
+#track-teaser .sub{color:var(--text-mute);margin-top:14px}
+.track-bar{display:flex;gap:14px;max-width:640px;margin:38px auto 0}
+.track-input{flex:1;font:500 clamp(16px,2.4vw,22px) 'IBM Plex Mono',monospace;letter-spacing:.08em;color:var(--text);background:var(--surface-2);border:1px solid var(--hairline-hi);border-radius:14px;padding:18px 24px;min-width:0;transition:border-color .25s ease,box-shadow .25s ease}
+.track-input::placeholder{color:var(--text-faint)}
+.track-input:focus{outline:none;border-color:var(--accent);box-shadow:var(--accent-glow)}
+.track-hint{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--text-faint)}
+.track-hint a{color:var(--text-mute);border-bottom:1px dashed var(--text-faint)}
+.track-hint a:hover{color:var(--accent)}
+
+/* ============ PRICING TEASER ============ */
+#pricing-teaser{padding:var(--sect) 0}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.manifest{background:var(--elevated);border:1px solid var(--hairline);border-radius:18px;padding:30px;box-shadow:var(--shadow-card)}
+.manifest .m-head{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);padding-bottom:14px;border-bottom:1px dashed var(--hairline-hi)}
+.manifest .m-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 0;border-bottom:1px dashed var(--hairline-hi)}
+.manifest .m-row:last-child{border-bottom:0}
+.manifest .m-route{font-weight:500;font-size:15px}
+.manifest .m-route small{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--text-faint);margin-top:3px}
+.manifest .m-price{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--accent);white-space:nowrap}
+.price-copy h2{font-size:var(--t-h2);line-height:1}
+.price-copy p{color:var(--text-mute);margin-top:18px;max-width:44ch}
+.price-copy .btn-primary{margin-top:30px}
+
+/* ============ TESTIMONIALS ============ */
+#testimonials{padding:var(--sect) 0;background:var(--surface-2);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tst-card{background:var(--elevated);border:1px solid var(--hairline);border-radius:18px;padding:30px;box-shadow:var(--shadow-card)}
+.tst-card .quote-mark{font-family:'Big Shoulders',sans-serif;font-size:52px;font-weight:900;color:var(--accent);line-height:.6}
+.tst-card p{color:var(--text-mute);font-size:15px;margin-top:18px}
+.tst-card .who{margin-top:22px;display:flex;align-items:center;gap:12px}
+.tst-card .avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font:700 15px 'Big Shoulders',sans-serif;color:#081020}
+.tst-card .who b{display:block;font-size:14.5px}
+.tst-card .who span{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--text-faint)}
+
+/* ============ FAQ PREVIEW ============ */
+#faq-preview{padding:var(--sect) 0}
+.faq-list{max-width:820px;margin:44px auto 0}
+.faq-item{border-bottom:1px dashed var(--hairline-hi)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 4px;font-weight:500;font-size:var(--t-body-lg)}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .fx{flex:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--hairline-hi);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:400;transition:transform .3s ease,border-color .3s ease}
+.faq-item[open] summary .fx{transform:rotate(45deg);border-color:var(--accent)}
+.faq-item .fa{padding:0 4px 24px;color:var(--text-mute);max-width:62ch}
+#faq-preview .arrow-link{display:inline-flex;margin-top:34px}
+#faq-preview .center-wrap{text-align:center}
+
+/* ============ CTA BAND ============ */
+#cta{padding:var(--sect) 0;text-align:center;overflow:hidden;position:relative}
+#cta .ghost-ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(120vw,900px);opacity:.06;pointer-events:none}
+#cta h2{font-size:var(--t-h1);line-height:.95;position:relative}
+#cta p{color:var(--text-mute);margin-top:18px;position:relative}
+#cta .cta-row{display:flex;gap:16px;justify-content:center;margin-top:38px;flex-wrap:wrap;position:relative}
+
+/* ============ WHATSAPP ============ */
+.btn-whatsapp{display:inline-flex;align-items:center;gap:10px;font:600 15px 'IBM Plex Sans',sans-serif;padding:15px 26px;border-radius:999px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.35);color:var(--whatsapp);transition:transform .25s cubic-bezier(.22,1,.36,1),background-color .25s ease;will-change:transform}
+.btn-whatsapp:hover{transform:translateY(-2px);background:rgba(37,211,102,.2)}
+.btn-whatsapp:active{transform:translateY(0)}
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--whatsapp);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.4);transition:transform .25s cubic-bezier(.22,1,.36,1);will-change:transform}
+.wa-float:hover{transform:translateY(-3px) scale(1.05)}
+.wa-float:active{transform:scale(.98)}
+.wa-float svg{width:30px;height:30px;fill:#07100A}
+.wa-float::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:waPulse 2.6s ease-out infinite}
+@keyframes waPulse{0%{transform:scale(.85);opacity:1}70%,100%{transform:scale(1.25);opacity:0}}
+
+/* ============ FOOTER ============ */
+footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
+.foot-brand p{color:var(--text-faint);font-size:14px;margin-top:16px;max-width:30ch}
+.foot-col h4{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);margin-bottom:18px;font-weight:500}
+.foot-col a,.foot-col span{display:block;color:var(--text-mute);font-size:14.5px;padding:5px 0;transition:color .2s ease}
+.foot-col a:hover{color:var(--accent)}
+.foot-note{margin-top:56px;padding-top:24px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;color:var(--text-faint)}
+.foot-note a{color:var(--text-mute)}
+.foot-note a:hover{color:var(--accent)}
+
+/* ============ REVEAL DEFAULTS ============ */
+.gs-reveal{will-change:transform,opacity}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1180px){
+  .route-inner{grid-template-columns:minmax(200px,260px) 1fr}
+}
+@media (max-width:1023px){
+  #route-spacer{display:none}
+  #route-mobile{display:block}
+  .nav-links{display:none}
+  .nav-cta .btn-ghost{display:none}
+  .burger{display:flex}
+  .trust-grid{grid-template-columns:repeat(2,1fr);gap:34px}
+  .svc-grid{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+  .how-grid{grid-template-columns:1fr;gap:34px}
+  .how-step{padding:0 0 0 30px}
+  .how-step + .how-step{padding-left:30px}
+  .how-step::before{top:16px;left:6px;right:auto;bottom:-34px;border-top:0;border-left:2px dashed var(--hairline-hi)}
+  .how-step:last-child::before{display:none}
+  .how-dot{position:absolute;left:0;top:2px}
+  .how-num{margin-top:0}
+  .fleet-split,.price-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .track-bar{flex-direction:column}
+  .hero-ctas .btn-primary,.hero-ctas .btn-ghost{width:100%;justify-content:center}
+  .foot-grid{grid-template-columns:1fr}
+  .wa-float{right:16px;bottom:16px;width:54px;height:54px}
+  .tst-grid{grid-template-columns:1fr}
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  #loader{display:none}
+  .ticker-track{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader" aria-hidden="true">
+  <svg viewBox="0 0 64 64" fill="none">
+    <path class="ring" d="M 52.67 24.48 A 22 22 0 1 1 39.52 11.33" stroke="#EEF3F9" stroke-width="6" stroke-linecap="round"/>
+    <path class="route" d="M 20 41.5 C 31 49.5, 46 19.5, 53 12" stroke="#FF6B1A" stroke-width="6" stroke-linecap="round"/>
+    <path class="head" d="M 58.1 6.9 L 56.5 14.5 L 50.5 8.5 Z" fill="#FF6B1A"/>
+  </svg>
+</div>
+
+<!-- Grain -->
+<svg class="grain" aria-hidden="true"><filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grainF)"/></svg>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Omni Cargo home">
+      <img src="assets/logos/omni-symbol-white.svg" alt="" width="34" height="34" loading="eager">
+      <span class="wm">OMNI<small>CARGO</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html" class="active">Home</a>
+      <a href="services.html">Services</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn-ghost" href="track.html">Track Cargo</a>
+      <a class="btn-primary" href="book.html">Book a Shipment</a>
+      <button class="burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="fleet.html">Fleet</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="track.html">Track Cargo</a>
+  <a href="about.html">About</a>
+  <a href="faqs.html">FAQs</a>
+  <a href="contact.html">Contact</a>
+  <div class="mm-cta">
+    <a class="btn-primary" href="book.html">Book a Shipment</a>
+    <a class="btn-whatsapp" href="https://wa.me/254700000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="hero-bg"><img src="assets/img/hero-port.jpg" alt="" width="1600" height="1000" loading="eager" fetchpriority="high"></div>
+  <div class="hero-mid" aria-hidden="true">
+    <svg viewBox="0 0 64 64" fill="none">
+      <path d="M 52.67 24.48 A 22 22 0 1 1 39.52 11.33" stroke="#EEF3F9" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M 20 41.5 C 31 49.5, 46 19.5, 53 12" stroke="#FF6B1A" stroke-width="1.2" stroke-linecap="round"/>
+      <path d="M 58.1 6.9 L 56.5 14.5 L 50.5 8.5 Z" fill="#FF6B1A"/>
+    </svg>
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow hero-eyebrow">Cargo transport · Kenya</div>
+    <h1>Mombasa to <em>Nairobi.</em> Moved.</h1>
+    <p class="hero-sub">Medium loose cargo across the 485&nbsp;km corridor — and <b>anywhere within Nairobi</b>. A reliable pickup fleet, one point of contact, and a tracking number for every load.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="book.html">Book a Shipment</a>
+      <a class="btn-ghost" href="track.html">Track Your Cargo</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span><b>OC-2026-10547</b> · <i>IN TRANSIT</i> · MTITO ANDEI · ETA 21:40</span>
+        <span><b>OC-2026-10562</b> · <i>OUT FOR DELIVERY</i> · WESTLANDS, NAIROBI</span>
+        <span><b>OC-2026-10553</b> · <i>PICKED UP</i> · SHIMANZI DEPOT, MOMBASA</span>
+        <span><b>OC-2026-10481</b> · <i>DELIVERED</i> · INDUSTRIAL AREA · POD SIGNED</span>
+        <span>NAIROBI ↔ MOMBASA · DAILY DEPARTURES · MON–SAT 07:00–19:00</span>
+        <span><b>OC-2026-10547</b> · <i>IN TRANSIT</i> · MTITO ANDEI · ETA 21:40</span>
+        <span><b>OC-2026-10562</b> · <i>OUT FOR DELIVERY</i> · WESTLANDS, NAIROBI</span>
+        <span><b>OC-2026-10553</b> · <i>PICKED UP</i> · SHIMANZI DEPOT, MOMBASA</span>
+        <span><b>OC-2026-10481</b> · <i>DELIVERED</i> · INDUSTRIAL AREA · POD SIGNED</span>
+        <span>NAIROBI ↔ MOMBASA · DAILY DEPARTURES · MON–SAT 07:00–19:00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<section id="trust">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="stat gs-reveal"><div class="num"><span class="count" data-to="485">485</span><i>KM</i></div><div class="lbl">Corridor · one driver</div></div>
+      <div class="stat gs-reveal"><div class="num"><span class="count" data-to="1200">1,200</span><i>+</i></div><div class="lbl">Loads delivered</div></div>
+      <div class="stat gs-reveal"><div class="num">&lt;<span class="count" data-to="9">9</span><i>HRS</i></div><div class="lbl">Typical corridor transit</div></div>
+      <div class="stat gs-reveal"><div class="num">Same<i>DAY</i></div><div class="lbl">Intra-Nairobi delivery</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROUTE NARRATIVE (desktop pinned) ============ -->
+<section id="route" aria-label="The Omni Cargo corridor journey">
+  <div id="route-spacer">
+    <div id="route-pin">
+      <div class="route-inner">
+        <div class="route-rail" aria-hidden="true">
+          <svg viewBox="0 0 220 1180" fill="none">
+            <defs>
+              <linearGradient id="routeGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#FF6B1A"/><stop offset="1" stop-color="#FFB347"/>
+              </linearGradient>
+            </defs>
+            <path class="route-base" d="M 100 40 C 90 120 70 190 80 260 S 110 400 120 480 S 80 620 85 700 S 120 850 115 920 S 95 1070 100 1140"/>
+            <path class="route-progress" id="routePath" d="M 100 40 C 90 120 70 190 80 260 S 110 400 120 480 S 80 620 85 700 S 120 850 115 920 S 95 1070 100 1140"/>
+            <circle class="wp" id="wp1" cx="100" cy="40" r="7"/>
+            <circle class="wp" id="wp2" cx="80" cy="260" r="6"/>
+            <circle class="wp" id="wp3" cx="120" cy="480" r="6"/>
+            <circle class="wp" id="wp4" cx="85" cy="700" r="6"/>
+            <circle class="wp" id="wp5" cx="115" cy="920" r="6"/>
+            <circle class="wp" id="wp6" cx="100" cy="1140" r="7"/>
+            <text class="wp-label" x="118" y="44">Mombasa</text><text class="wp-km" x="118" y="60">0 km · Shimanzi</text>
+            <text class="wp-label" x="98" y="264">Mariakani</text><text class="wp-km" x="98" y="280">36 km</text>
+            <text class="wp-label" x="138" y="484">Voi</text><text class="wp-km" x="138" y="500">160 km</text>
+            <text class="wp-label" x="103" y="704">Mtito Andei</text><text class="wp-km" x="103" y="720">290 km</text>
+            <text class="wp-label" x="133" y="924">Machakos</text><text class="wp-km" x="133" y="940">420 km</text>
+            <text class="wp-label" x="118" y="1144">Nairobi</text><text class="wp-km" x="118" y="1160">485 km · Industrial Area</text>
+            <g id="truck">
+              <rect x="-13" y="-8" width="26" height="16" rx="4" fill="#FF6B1A"/>
+              <rect x="5" y="-5" width="7" height="10" rx="2" fill="#081020" opacity=".55"/>
+            </g>
+          </svg>
+        </div>
+        <div class="route-copy">
+          <div class="route-head">
+            <div class="eyebrow">The corridor run</div>
+            <h2 style="margin-top:16px">One load. One driver. <em>No hand-offs.</em></h2>
+            <div class="route-km mono">DISTANCE COVERED — <b><span id="kmCount">0</span> KM</b> / 485 KM</div>
+          </div>
+          <div class="route-cards">
+            <article class="route-card rc-first" id="rc1">
+              <div class="ph"><img src="assets/img/depot-loading.jpg" alt="Cargo loaded at the Mombasa depot" width="800" height="500" loading="lazy"></div>
+              <div class="rc-meta"><b>00 · Booked</b><span>Shimanzi, Mombasa</span></div>
+              <h3>Weighed, netted, loaded</h3>
+              <p>Your cargo checks in at our Mombasa depot. It's weighed, photographed, netted down on the pickup bed and issued a tracking number — before we move a metre.</p>
+            </article>
+            <article class="route-card" id="rc2">
+              <div class="ph"><img src="assets/img/route-highway.jpg" alt="Omni Cargo truck on the Mombasa–Nairobi highway" width="800" height="500" loading="lazy"></div>
+              <div class="rc-meta"><b>01 · In transit</b><span>A109 · Voi → Mtito Andei</span></div>
+              <h3>The corridor run</h3>
+              <p>485 km up the A109 with one driver and zero cargo hand-offs. Status pings at Mariakani, Voi, Mtito Andei and Machakos — you'll know where your load is.</p>
+            </article>
+            <article class="route-card" id="rc3">
+              <div class="ph"><img src="assets/img/warehouse-aisles.jpg" alt="Nairobi depot arrival" width="800" height="500" loading="lazy"></div>
+              <div class="rc-meta"><b>02 · Arrived</b><span>Industrial Area, Nairobi</span></div>
+              <h3>Depot arrival</h3>
+              <p>Same-day arrival at our Nairobi depot. Cargo is checked against the manifest, restacked and staged for the final leg — or held safely for collection.</p>
+            </article>
+            <article class="route-card" id="rc4">
+              <div class="ph"><img src="assets/img/nairobi-skyline.jpg" alt="Delivery across Nairobi" width="800" height="500" loading="lazy"></div>
+              <div class="rc-meta"><b>03 · Delivered</b><span>Anywhere in Nairobi</span></div>
+              <h3>Last mile, signed</h3>
+              <p>Doorstep delivery anywhere in Nairobi with proof of delivery — a name, a signature, a timestamp. You get the SMS before the driver leaves the gate.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- mobile fallback -->
+  <div id="route-mobile">
+    <div class="wrap">
+      <div class="eyebrow">The corridor run</div>
+      <h2 style="font-size:var(--t-h2);margin-top:14px">One load. One driver. <em>No hand-offs.</em></h2>
+      <div class="m-stage" style="margin-top:44px">
+        <div class="m-line"><div class="m-dot"></div><div class="m-conn"></div></div>
+        <div class="m-body">
+          <div class="ph"><img src="assets/img/depot-loading.jpg" alt="Cargo loaded at the Mombasa depot" width="800" height="500" loading="lazy"></div>
+          <div class="m-meta"><b>00 · Booked</b> · Shimanzi, Mombasa · 0 km</div>
+          <h3>Weighed, netted, loaded</h3>
+          <p>Cargo checks in at our Mombasa depot — weighed, photographed, netted down and issued a tracking number.</p>
+        </div>
+      </div>
+      <div class="m-stage">
+        <div class="m-line"><div class="m-dot"></div><div class="m-conn"></div></div>
+        <div class="m-body">
+          <div class="ph"><img src="assets/img/route-highway.jpg" alt="Truck on the Mombasa–Nairobi highway" width="800" height="500" loading="lazy"></div>
+          <div class="m-meta"><b>01 · In transit</b> · A109 corridor · 290 km</div>
+          <h3>The corridor run</h3>
+          <p>485 km up the A109, one driver, zero hand-offs. Status pings at Mariakani, Voi, Mtito Andei, Machakos.</p>
+        </div>
+      </div>
+      <div class="m-stage">
+        <div class="m-line"><div class="m-dot"></div><div class="m-conn"></div></div>
+        <div class="m-body">
+          <div class="ph"><img src="assets/img/warehouse-aisles.jpg" alt="Nairobi depot arrival" width="800" height="500" loading="lazy"></div>
+          <div class="m-meta"><b>02 · Arrived</b> · Industrial Area · 485 km</div>
+          <h3>Depot arrival</h3>
+          <p>Same-day arrival, checked against the manifest and staged for the final leg — or held for collection.</p>
+        </div>
+      </div>
+      <div class="m-stage">
+        <div class="m-line"><div class="m-dot"></div></div>
+        <div class="m-body" style="padding-bottom:0">
+          <div class="ph"><img src="assets/img/nairobi-skyline.jpg" alt="Delivery across Nairobi" width="800" height="500" loading="lazy"></div>
+          <div class="m-meta"><b>03 · Delivered</b> · Anywhere in Nairobi</div>
+          <h3>Last mile, signed</h3>
+          <p>Doorstep delivery with proof — a name, a signature, a timestamp, and an SMS to confirm it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="sect-head">
+      <div>
+        <div class="eyebrow">What we move</div>
+        <h2 style="margin-top:14px">Three services. <em>Zero guesswork.</em></h2>
+      </div>
+      <p>Medium loose cargo — furniture, stock, appliances, sacks, crates. If it fits a pickup and matters to you, it's our business.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc-card gs-reveal">
+        <div class="ph"><img src="assets/img/route-highway.jpg" alt="Mombasa to Nairobi corridor service" width="800" height="500" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="mono-tag">MSA ↔ NBO · Daily</div>
+          <h3>Corridor freight</h3>
+          <p>Scheduled runs both directions on the A109. Depot-to-depot or door-to-door, tracked at every waypoint.</p>
+          <a class="arrow-link" href="services.html">Explore corridor freight <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+      <article class="svc-card gs-reveal">
+        <div class="ph"><img src="assets/img/nairobi-skyline.jpg" alt="Same-day delivery within Nairobi" width="800" height="500" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="mono-tag">Nairobi · Same-day</div>
+          <h3>Intra-Nairobi</h3>
+          <p>Pickup to doorstep anywhere in Nairobi — Industrial Area to Westlands, Gikomba to Karen. Booked by 2 PM, delivered today.</p>
+          <a class="arrow-link" href="services.html">Explore Nairobi delivery <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+      <article class="svc-card gs-reveal">
+        <div class="ph"><img src="assets/img/cargo-tarp.jpg" alt="Regular business cargo runs" width="800" height="500" loading="lazy"></div>
+        <div class="svc-body">
+          <div class="mono-tag">Business · Recurring</div>
+          <h3>Business runs</h3>
+          <p>Weekly stock movements for shops and online sellers. Fixed slots, priority loading, one invoice at month end.</p>
+          <a class="arrow-link" href="services.html">Explore business runs <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how">
+  <div class="wrap">
+    <div class="sect-head">
+      <div>
+        <div class="eyebrow">How it works</div>
+        <h2 style="margin-top:14px">Booked to delivered in <em>four moves.</em></h2>
+      </div>
+    </div>
+    <div class="how-grid">
+      <div class="how-step gs-reveal">
+        <div class="how-dot"></div>
+        <div class="how-num">STEP 01</div>
+        <h3>Book it</h3>
+        <p>Online form or WhatsApp. Tell us what, where from, where to. We confirm price and pickup window within 30 minutes.</p>
+      </div>
+      <div class="how-step gs-reveal">
+        <div class="how-dot"></div>
+        <div class="how-num">STEP 02</div>
+        <h3>We pick up</h3>
+        <p>Our crew loads, nets and secures your cargo — photographed and manifested before departure.</p>
+      </div>
+      <div class="how-step gs-reveal">
+        <div class="how-dot"></div>
+        <div class="how-num">STEP 03</div>
+        <h3>Track it live</h3>
+        <p>Your tracking number follows the load through every waypoint. SMS updates at each status change.</p>
+      </div>
+      <div class="how-step gs-reveal">
+        <div class="how-dot"></div>
+        <div class="how-num">STEP 04</div>
+        <h3>Delivered, signed</h3>
+        <p>Proof of delivery with a name and timestamp. Damage-free or we make it right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLEET TEASER ============ -->
+<section id="fleet">
+  <div class="wrap">
+    <div class="fleet-split">
+      <div class="fleet-ph gs-reveal">
+        <img src="assets/img/fleet-champ-hero.jpg" alt="Omni Cargo 2024 Toyota Hilux Champ pickup" width="1200" height="900" loading="lazy">
+        <div class="fleet-badge">2024 <b>TOYOTA HILUX CHAMP</b> · FLAT DECK</div>
+      </div>
+      <div class="fleet-copy">
+        <div class="eyebrow">The fleet</div>
+        <h2 style="margin-top:14px">The latest 2024 <em>Hilux Champ.</em></h2>
+        <p>We run the newest 2024 Toyota Hilux Champ models — purpose-built flat-deck pickups with three-way drop-sides, engineered for the most efficient loose-cargo deliveries on the corridor and across Nairobi.</p>
+        <div class="spec-table">
+          <div class="spec-row"><span>Model year</span><b>2024 · LATEST FLEET</b></div>
+          <div class="spec-row"><span>Payload capacity</span><b>UP TO 1,000 KG</b></div>
+          <div class="spec-row"><span>Load deck</span><b>2.1 M FLAT DECK · 3-WAY DROP-SIDES</b></div>
+          <div class="spec-row"><span>Securing</span><b>NETS · STRAPS · TARPS</b></div>
+          <div class="spec-row"><span>Departures</span><b>DAILY · MON–SAT</b></div>
+        </div>
+        <a class="btn-ghost" href="fleet.html">See the fleet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRACK TEASER ============ -->
+<section id="track-teaser">
+  <div class="wrap">
+    <div class="eyebrow center">Live tracking</div>
+    <h2 style="margin-top:14px">Where's my <em>cargo?</em></h2>
+    <p class="sub">Every load gets a tracking number at pickup. Enter it here.</p>
+    <form class="track-bar" action="track.html" method="get" id="trackForm">
+      <label for="tn" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Tracking number</label>
+      <input class="track-input" id="tn" name="tn" placeholder="OC-2026-10547" autocomplete="off" spellcheck="false">
+      <button class="btn-primary" type="submit">Track</button>
+    </form>
+    <p class="track-hint">Try a demo: <a href="track.html?tn=OC-2026-10547">OC-2026-10547</a> · <a href="track.html?tn=OC-2026-10481">OC-2026-10481</a></p>
+  </div>
+</section>
+
+<!-- ============ PRICING TEASER ============ -->
+<section id="pricing-teaser">
+  <div class="wrap">
+    <div class="price-grid">
+      <div class="price-copy">
+        <div class="eyebrow">Pricing</div>
+        <h2 style="margin-top:14px">Straight rates. <em>No surprises.</em></h2>
+        <p>Priced by route and weight band, quoted before we load. Request a quote and we respond within 30 minutes, Mon–Sat.</p>
+        <a class="btn-primary" href="pricing.html">Request a Quote</a>
+      </div>
+      <div class="manifest gs-reveal">
+        <div class="m-head"><span>Route manifest</span><span>From</span></div>
+        <div class="m-row">
+          <div class="m-route">Mombasa → Nairobi<small>DEPOT–DEPOT · UP TO 500 KG</small></div>
+          <div class="m-price">KES 8,500</div>
+        </div>
+        <div class="m-row">
+          <div class="m-route">Nairobi → Mombasa<small>DEPOT–DEPOT · UP TO 500 KG</small></div>
+          <div class="m-price">KES 8,500</div>
+        </div>
+        <div class="m-row">
+          <div class="m-route">Within Nairobi<small>DOOR–DOOR · SAME DAY</small></div>
+          <div class="m-price">KES 2,000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="sect-head">
+      <div>
+        <div class="eyebrow">Word on the road</div>
+        <h2 style="margin-top:14px">Traders trust the <em>corridor.</em></h2>
+      </div>
+    </div>
+    <div class="tst-grid">
+      <article class="tst-card gs-reveal">
+        <div class="quote-mark">"</div>
+        <p>My electronics stock used to take three days and two middlemen. Omni picks up in Mombasa in the morning and it's in my shop the next day — with a tracking number I can actually check.</p>
+        <div class="who"><div class="avatar">JK</div><div><b>James K.</b><span>ELECTRONICS TRADER · NAIROBI</span></div></div>
+      </article>
+      <article class="tst-card gs-reveal">
+        <div class="quote-mark">"</div>
+        <p>Furniture is the worst cargo — it arrives scratched or it doesn't arrive. These guys net everything down, photograph it, and it shows up like it left. Six months, zero damage.</p>
+        <div class="who"><div class="avatar">AW</div><div><b>Amina W.</b><span>FURNITURE STORE · MOMBASA</span></div></div>
+      </article>
+      <article class="tst-card gs-reveal">
+        <div class="quote-mark">"</div>
+        <p>I run an online store and my customers are in both cities. The weekly business run means fixed costs I can price around, and the SMS updates mean I stop answering "where is my order?"</p>
+        <div class="who"><div class="avatar">PM</div><div><b>Peter M.</b><span>E-COMMERCE SELLER · NAIROBI</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ PREVIEW ============ -->
+<section id="faq-preview">
+  <div class="wrap center-wrap">
+    <div class="eyebrow center">Questions</div>
+    <h2 style="margin-top:14px;font-size:var(--t-h2)">Before you <em>book.</em></h2>
+    <div class="faq-list" style="text-align:left">
+      <details class="faq-item">
+        <summary>What counts as "medium loose cargo"?<span class="fx">+</span></summary>
+        <div class="fa">Anything that fits a pickup bed and doesn't need a crane: furniture, boxed stock, appliances, sacks of produce, crates, spare parts. If you're unsure, send us a photo on WhatsApp — we'll confirm in minutes.</div>
+      </details>
+      <details class="faq-item">
+        <summary>How long does Mombasa to Nairobi take?<span class="fx">+</span></summary>
+        <div class="fa">Typically under 9 hours depot-to-depot on the same day. Morning pickups usually arrive in Nairobi the same evening; door delivery happens same day or next morning.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is my cargo insured while in transit?<span class="fx">+</span></summary>
+        <div class="fa">Every load is manifested and photographed at pickup, and goods-in-transit cover is available for declared-value cargo. Ask for GIT cover when you book.</div>
+      </details>
+    </div>
+    <a class="arrow-link" href="faqs.html">All questions, answered <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</section>
+
+<!-- ============ CTA BAND ============ -->
+<section id="cta">
+  <svg class="ghost-ring" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+    <path d="M 52.67 24.48 A 22 22 0 1 1 39.52 11.33" stroke="#EEF3F9" stroke-width="1" stroke-linecap="round"/>
+    <path d="M 20 41.5 C 31 49.5, 46 19.5, 53 12" stroke="#FF6B1A" stroke-width="1" stroke-linecap="round"/>
+  </svg>
+  <div class="wrap">
+    <h2>Ready to <em>move?</em></h2>
+    <p>Quote in 30 minutes. Pickup today if you're quick.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="book.html">Book a Shipment</a>
+      <a class="btn-whatsapp" href="https://wa.me/254700000000?text=Hi%20Omni%20Cargo%2C%20I%27d%20like%20a%20quote." target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-1.5-.5 11.6 11.6 0 0 1-4.4-3.9 5 5 0 0 1-1-2.7c0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c0 .2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.2 2.1 1.3.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3 0 .2 0 .7-.2 1.2Z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html" aria-label="Omni Cargo home">
+          <img src="assets/logos/omni-symbol-white.svg" alt="" width="34" height="34" loading="lazy">
+          <span class="wm">OMNI<small>CARGO</small></span>
+        </a>
+        <p>Fast, secure, affordable cargo transportation. Mombasa ↔ Nairobi and anywhere within Nairobi.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Our Services</a>
+        <a href="fleet.html">Fleet</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="foot-col">
+        <h4>Shipments</h4>
+        <a href="book.html">Book a Shipment</a>
+        <a href="track.html">Track Your Cargo</a>
+        <a href="pricing.html">Pricing &amp; Quotes</a>
+        <a href="app.html">App concept ↗</a>
+      </div>
+      <div class="foot-col">
+        <h4>Reach us</h4>
+        <span>Enterprise Road, Industrial Area, Nairobi</span>
+        <span>Shimanzi Road, Shimanzi, Mombasa</span>
+        <a href="tel:+254700000000">+254 700 000 000</a>
+        <a href="mailto:hello@omnicargo.co.ke">hello@omnicargo.co.ke</a>
+        <span>Mon–Sat · 07:00–19:00</span>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>© 2026 Omni Cargo. All rights reserved.</span>
+      <span>MOMBASA ↔ NAIROBI · <a href="track.html">TRACK A LOAD</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a class="wa-float" href="https://wa.me/254700000000" target="_blank" rel="noopener" aria-label="Chat with Omni Cargo on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-1.5-.5 11.6 11.6 0 0 1-4.4-3.9 5 5 0 0 1-1-2.7c0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c0 .2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.2 2.1 1.3.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3 0 .2 0 .7-.2 1.2Z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const STATIC = params.has('static');
+  const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Loader ---- */
+  const loader = document.getElementById('loader');
+  const seen = sessionStorage.getItem('omni_loaded');
+  if (STATIC || REDUCED || seen) {
+    loader.style.display = 'none';
+  } else {
+    sessionStorage.setItem('omni_loaded', '1');
+    setTimeout(() => loader.classList.add('done'), 1250);
+  }
+
+  /* ---- Mobile menu ---- */
+  const burger = document.querySelector('.burger');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open'); document.body.style.overflow = '';
+  }));
+
+  /* ---- Track form: pass through with tn ---- */
+  document.getElementById('trackForm').addEventListener('submit', (e) => {
+    const v = document.getElementById('tn').value.trim();
+    if (!v) { e.preventDefault(); location.href = 'track.html'; }
+  });
+
+  if (STATIC || REDUCED || !window.gsap) {
+    // Static/reduced: reveal everything, fully drawn route, final numbers, unpinned layout.
+    document.querySelectorAll('.route-card').forEach(c => { c.style.opacity = 1; c.style.visibility = 'visible'; c.style.position = 'relative'; c.style.marginBottom = '40px'; });
+    const km = document.getElementById('kmCount'); if (km) km.textContent = '485';
+    document.querySelectorAll('.wp').forEach(w => { w.style.fill = '#FF6B1A'; w.style.stroke = '#FF6B1A'; });
+    const sp = document.getElementById('route-spacer'), pin = document.getElementById('route-pin');
+    if (sp) sp.style.height = 'auto';
+    if (pin) { pin.style.position = 'relative'; pin.style.height = 'auto'; pin.style.padding = '80px 0'; }
+    const rail = document.querySelector('.route-rail'); if (rail) rail.style.height = '1100px';
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+  /* ---- Lenis smooth scroll ---- */
+  const lenis = new Lenis({ duration: 1.35, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), touchMultiplier: 2 });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(time => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+
+  if ('ontouchstart' in window) ScrollTrigger.normalizeScroll(true);
+
+  /* ---- Hero entrance (immediate, not scroll-triggered) ---- */
+  const delay = seen ? 0.1 : 1.0;
+  gsap.timeline({ defaults: { ease: 'power3.out', duration: 1 }, delay })
+    .fromTo('.hero-eyebrow', { y: 26, autoAlpha: 0 }, { y: 0, autoAlpha: 1 })
+    .fromTo('#hero h1',      { y: 54, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '-=0.75')
+    .fromTo('.hero-sub',     { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '-=0.75')
+    .fromTo('.hero-ctas',    { y: 22, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, '-=0.75')
+    .fromTo('.hero-foot',    { autoAlpha: 0 },        { autoAlpha: 1, duration: .7 }, '-=0.5');
+
+  /* ---- Hero parallax planes ---- */
+  gsap.to('.hero-bg img', {
+    yPercent: 12, ease: 'none',
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1.4 }
+  });
+  gsap.to('.hero-mid svg', {
+    yPercent: -18, rotate: 8, ease: 'none',
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 2.2 }
+  });
+
+  /* ---- Generic reveals ---- */
+  gsap.utils.toArray('.gs-reveal').forEach((el, i) => {
+    gsap.fromTo(el, { y: 44, autoAlpha: 0 }, {
+      y: 0, autoAlpha: 1, duration: .9, ease: 'power3.out', immediateRender: false,
+      scrollTrigger: { trigger: el, start: 'top 86%', toggleActions: 'play none none none' }
+    });
+  });
+
+  /* ---- Stat countups ---- */
+  gsap.utils.toArray('.count').forEach(el => {
+    const to = parseFloat(el.dataset.to);
+    const obj = { v: 0 };
+    gsap.to(obj, {
+      v: to, duration: 1.8, ease: 'power2.out',
+      scrollTrigger: { trigger: el, start: 'top 88%' },
+      onUpdate: () => { el.textContent = Math.round(obj.v).toLocaleString('en-US'); }
+    });
+  });
+
+  /* ---- Route narrative (desktop only) ---- */
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 1024px)', () => {
+    const path = document.getElementById('routePath');
+    const len = path.getTotalLength();
+    gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
+    gsap.set('#truck', { transformOrigin: '50% 50%' });
+
+    const km = document.getElementById('kmCount');
+    const kmObj = { v: 0 };
+    const cards = ['#rc1', '#rc2', '#rc3', '#rc4'];
+    const D = 10; // total scrub duration units
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#route-spacer', start: 'top top', end: 'bottom bottom', scrub: 1
+      },
+      defaults: { ease: 'none' }
+    });
+
+    // path draw + truck + km counter run the full duration
+    tl.to(path, { strokeDashoffset: 0, duration: D }, 0)
+      .to('#truck', {
+        motionPath: { path: '#routePath', align: '#routePath', alignOrigin: [0.5, 0.5], autoRotate: 90 },
+        duration: D
+      }, 0)
+      .to(kmObj, { v: 485, duration: D, onUpdate: () => km.textContent = Math.round(kmObj.v) }, 0);
+
+    // waypoints ignite as the truck passes (positions ≈ segment fractions of D)
+    [['#wp1', 0.05], ['#wp2', 2], ['#wp3', 4], ['#wp4', 6], ['#wp5', 8], ['#wp6', 9.8]].forEach(([id, t]) => {
+      tl.to(id, { attr: { r: 8 }, fill: '#FF6B1A', stroke: '#FF6B1A', duration: .25 }, t);
+    });
+
+    // narration card swaps at journey beats
+    const swaps = [[1, 2.6], [2, 5.6], [3, 8.3]];
+    swaps.forEach(([idx, t]) => {
+      tl.to(cards[idx - 1], { autoAlpha: 0, y: -26, duration: .45 }, t)
+        .fromTo(cards[idx], { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: .45 }, t + .25);
+    });
+
+    return () => {}; // matchMedia cleanup handled by GSAP
+  });
+
+  /* ---- Refresh after images ---- */
+  window.addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>

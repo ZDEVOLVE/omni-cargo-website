@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Omni Cargo</title>
+<meta name="description" content="Omni Cargo is a Kenyan cargo company built on the Mombasa–Nairobi corridor — a 2024 Hilux Champ fleet, a tracking number for every load, and one promise: it arrives.">
+<link rel="canonical" href="https://omnicargo.co.ke/about.html">
+<meta name="theme-color" content="#0A1626">
+<link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Omni Cargo">
+<meta property="og:title" content="About Us — Omni Cargo">
+<meta property="og:description" content="Built on the Mombasa–Nairobi corridor. A tracking number for every load.">
+<meta property="og:url" content="https://omnicargo.co.ke/about.html">
+<meta property="og:image" content="https://omnicargo.co.ke/assets/og/omni-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://omnicargo.co.ke/assets/og/omni-og.png">
+<!-- GA4 placeholder: <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,700;10..72,800;10..72,900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --surface:#0A1626; --surface-2:#0F2035; --elevated:#142A44; --elevated-hi:#1B3554;
+  --accent:#FF6B1A; --accent-2:#FFB347; --accent-soft:rgba(255,107,26,.16);
+  --accent-glow:0 0 28px rgba(255,107,26,.45);
+  --text:#EEF3F9; --text-mute:#8CA3BC; --text-faint:#5D7590;
+  --hairline:rgba(238,243,249,.08); --hairline-hi:rgba(238,243,249,.18);
+  --shadow-card:0 12px 40px rgba(3,8,16,.5); --shadow-cta:0 8px 28px rgba(255,107,26,.35);
+  --whatsapp:#25D366;
+  --t-h1:clamp(44px,6.5vw,96px); --t-h2:clamp(34px,4.5vw,64px); --t-h3:clamp(24px,3vw,38px);
+  --pad:clamp(20px,5vw,72px); --sect:clamp(88px,10vw,160px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--surface);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#081020}
+h1,h2,h3{font-family:'Big Shoulders',sans-serif;text-transform:uppercase;font-weight:800}
+h1 em,h2 em,h3 em{font-style:normal;color:var(--accent)}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--accent);flex:none}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.045;mix-blend-mode:overlay}
+
+.btn-primary,.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16px/1 'IBM Plex Sans',sans-serif;padding:16px 30px;border-radius:999px;cursor:pointer;border:0;will-change:transform;transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s ease,border-color .25s ease,color .25s ease,background-color .25s ease}
+.btn-primary{background:var(--accent);color:#081020;box-shadow:var(--shadow-cta)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(255,107,26,.5)}
+.btn-primary:active{transform:translateY(0)}
+.btn-ghost{border:1px solid var(--hairline-hi);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn-ghost:active{transform:translateY(0)}
+.btn-primary:focus-visible,.btn-ghost:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
+.btn-whatsapp{display:inline-flex;align-items:center;gap:10px;font:600 15px 'IBM Plex Sans',sans-serif;padding:15px 26px;border-radius:999px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.35);color:var(--whatsapp);transition:transform .25s cubic-bezier(.22,1,.36,1),background-color .25s ease;will-change:transform}
+.btn-whatsapp:hover{transform:translateY(-2px);background:rgba(37,211,102,.2)}
+.btn-whatsapp:active{transform:translateY(0)}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(10,22,38,.72);border-bottom:1px solid var(--hairline)}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 var(--pad);height:74px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:11px;flex:none}
+.brand img{width:34px;height:34px}
+.brand .wm{font-family:'Big Shoulders',sans-serif;font-weight:800;font-size:23px;letter-spacing:.02em;line-height:1;color:var(--text)}
+.brand .wm small{display:block;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:9.5px;letter-spacing:.34em;color:var(--text-mute);margin-top:2px}
+.nav-links{display:flex;gap:26px;margin-left:auto}
+.nav-links a{font:500 14.5px 'IBM Plex Sans',sans-serif;color:var(--text-mute);position:relative;padding:6px 0;transition:color .2s ease}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text)}
+.nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent)}
+.nav-cta{display:flex;gap:12px;align-items:center}
+.nav-cta .btn-ghost{padding:11px 20px;font-size:14px}
+.nav-cta .btn-primary{padding:12px 22px;font-size:14px}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer;flex-direction:column;justify-content:center;gap:6px;align-items:center}
+.burger span{display:block;width:24px;height:2px;background:var(--text)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:49;background:rgba(8,16,32,.98);padding:110px var(--pad) 40px;flex-direction:column;gap:6px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Big Shoulders',sans-serif;font-weight:800;text-transform:uppercase;font-size:34px;padding:10px 0;border-bottom:1px solid var(--hairline);color:var(--text)}
+.mobile-menu a:hover{color:var(--accent)}
+.mobile-menu .mm-cta{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+.mobile-menu .mm-cta a{border:0;font-family:'IBM Plex Sans',sans-serif;text-transform:none;font-size:16px}
+
+#page-hero{padding:170px 0 64px;position:relative;overflow:hidden}
+#page-hero .ghost{position:absolute;right:-8%;top:-30%;width:min(50vw,620px);opacity:.07;pointer-events:none}
+#page-hero h1{font-size:var(--t-h1);line-height:.95;margin-top:16px;max-width:14ch}
+#page-hero .sub{color:var(--text-mute);margin-top:16px;max-width:54ch}
+
+/* story */
+#story{padding-bottom:var(--sect)}
+.story-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.story-media{border-radius:20px;overflow:hidden;position:relative;box-shadow:var(--shadow-card);aspect-ratio:4/3}
+.story-media img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.08) brightness(.92)}
+.story-media::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,rgba(10,22,38,.05),rgba(10,22,38,.5))}
+.story-copy h2{font-size:var(--t-h2);line-height:1}
+.story-copy p{color:var(--text-mute);margin-top:16px;max-width:50ch}
+.story-copy p b{color:var(--text);font-weight:500}
+
+/* route strip */
+#route-strip{padding:var(--sect) 0;background:var(--surface-2);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);overflow:hidden}
+.rs-svg{margin-top:56px;overflow-x:auto;padding-bottom:10px}
+.rs-svg svg{min-width:760px;width:100%;height:auto}
+.rs-base{stroke:var(--hairline-hi);stroke-width:2;stroke-dasharray:3 7;fill:none}
+.rs-line{stroke:url(#rsGrad);stroke-width:3;fill:none;stroke-linecap:round}
+.rs-dot{fill:var(--accent)}
+.rs-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;fill:var(--text-mute);text-transform:uppercase}
+.rs-km{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em;fill:var(--text-faint)}
+
+/* values */
+#values{padding:var(--sect) 0}
+.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:44px}
+.val-card{background:var(--elevated);border:1px solid var(--hairline);border-radius:20px;padding:32px;box-shadow:var(--shadow-card)}
+.val-card .num{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--accent)}
+.val-card h3{font-size:22px;margin-top:10px}
+.val-card p{color:var(--text-mute);font-size:14.5px;margin-top:10px}
+
+/* app teaser */
+#app-teaser{padding:var(--sect) 0;background:var(--surface-2);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.app-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.app-copy h2{font-size:var(--t-h2);line-height:1}
+.app-copy p{color:var(--text-mute);margin-top:16px;max-width:46ch}
+.app-copy .row{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+.phone-frame{width:min(300px,80%);margin:0 auto;aspect-ratio:390/700;border-radius:36px;border:2px solid var(--hairline-hi);background:linear-gradient(170deg,var(--elevated),#0B1B30 70%);box-shadow:var(--shadow-card);position:relative;overflow:hidden;padding:22px}
+.phone-frame::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:90px;height:20px;border-radius:999px;background:#081020}
+.phone-frame .pf-head{margin-top:34px;display:flex;align-items:center;gap:9px}
+.phone-frame .pf-head img{width:26px;height:26px}
+.phone-frame .pf-head b{font-family:'Big Shoulders',sans-serif;font-weight:800;font-size:17px;letter-spacing:.02em}
+.phone-frame .pf-card{margin-top:18px;background:rgba(8,16,32,.6);border:1px solid var(--hairline);border-radius:14px;padding:14px}
+.phone-frame .pf-card .t{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--text-faint)}
+.phone-frame .pf-card .v{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text);margin-top:4px}
+.phone-frame .pf-chip{display:inline-block;margin-top:10px;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;padding:5px 10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#081020;font-weight:500}
+.phone-frame .pf-bar{margin-top:12px;height:3px;border-radius:2px;background:var(--surface);position:relative}
+.phone-frame .pf-bar::after{content:"";position:absolute;left:0;top:0;bottom:0;width:62%;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+#cta{padding:var(--sect) 0;text-align:center}
+#cta h2{font-size:var(--t-h2)}
+#cta p{color:var(--text-mute);margin-top:14px}
+#cta .row{display:flex;gap:16px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;max-width:1320px;margin:0 auto;padding:0 var(--pad)}
+.foot-brand p{color:var(--text-faint);font-size:14px;margin-top:16px;max-width:30ch}
+.foot-col h4{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);margin-bottom:18px;font-weight:500}
+.foot-col a,.foot-col span{display:block;color:var(--text-mute);font-size:14.5px;padding:5px 0;transition:color .2s ease}
+.foot-col a:hover{color:var(--accent)}
+.foot-note{max-width:1320px;margin:56px auto 0;padding:24px var(--pad) 0;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.08em;color:var(--text-faint)}
+.foot-note a{color:var(--text-mute)}
+.foot-note a:hover{color:var(--accent)}
+
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--whatsapp);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(37,211,102,.4);transition:transform .25s cubic-bezier(.22,1,.36,1);will-change:transform}
+.wa-float:hover{transform:translateY(-3px) scale(1.05)}
+.wa-float:active{transform:scale(.98)}
+.wa-float svg{width:30px;height:30px;fill:#07100A}
+.wa-float::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:waPulse 2.6s ease-out infinite}
+@keyframes waPulse{0%{transform:scale(.85);opacity:1}70%,100%{transform:scale(1.25);opacity:0}}
+
+@media (max-width:1023px){
+  .nav-links{display:none}
+  .nav-cta .btn-ghost{display:none}
+  .burger{display:flex}
+  .story-split,.app-split{grid-template-columns:1fr}
+  .val-grid{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .foot-grid{grid-template-columns:1fr}
+  .wa-float{right:16px;bottom:16px;width:54px;height:54px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+}
+</style>
+</head>
+<body>
+
+<svg class="grain" aria-hidden="true"><filter id="grainF"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grainF)"/></svg>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="Omni Cargo home">
+      <img src="assets/logos/omni-symbol-white.svg" alt="" width="34" height="34" loading="eager">
+      <span class="wm">OMNI<small>CARGO</small></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html" class="active">About</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn-ghost" href="track.html">Track Cargo</a>
+      <a class="btn-primary" href="book.html">Book a Shipment</a>
+      <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="fleet.html">Fleet</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="track.html">Track Cargo</a>
+  <a href="about.html">About</a>
+  <a href="faqs.html">FAQs</a>
+  <a href="contact.html">Contact</a>
+  <div class="mm-cta">
+    <a class="btn-primary" href="book.html">Book a Shipment</a>
+    <a class="btn-whatsapp" href="https://wa.me/254700000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </div>
+</div>
+
+<main>
+<section id="page-hero">
+  <svg class="ghost" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+    <path d="M 52.67 24.48 A 22 22 0 1 1 39.52 11.33" stroke="#EEF3F9" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M 20 41.5 C 31 49.5, 46 19.5, 53 12" stroke="#FF6B1A" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M 58.1 6.9 L 56.5 14.5 L 50.5 8.5 Z" fill="#FF6B1A"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow">About us</div>
+    <h1>Built on the <em>A109.</em></h1>
+    <p class="sub">Omni Cargo exists because moving cargo between Mombasa and Nairobi shouldn't feel like a gamble. We made it a schedule.</p>
+  </div>
+</section>
+
+<section id="story">
+  <div class="wrap">
+    <div class="story-split">
+      <div class="story-media">
+        <img src="assets/img/savanna-acacia.jpg" alt="Kenyan savanna at sunset along the corridor" width="1200" height="900" loading="lazy">
+      </div>
+      <div class="story-copy">
+        <div class="eyebrow">Our story</div>
+        <h2 style="margin-top:14px">Cargo people, <em>not middlemen.</em></h2>
+        <p>Omni Cargo was started by a family that spent years watching traders lose time and money to the corridor — loads split across strangers' lorries, no way to know where anything was, prices that changed at the loading bay.</p>
+        <p>So we built the operation we wished existed: <b>our own fleet of brand-new 2024 Toyota Hilux Champ pickups</b>, our own depots at both ends, a tracking number on every load, and a price that's fixed before anything is lifted.</p>
+        <p>We're new, and that's the point — no legacy shortcuts, no "that's how it's always been done." Just the corridor, run properly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="route-strip">
+  <div class="wrap">
+    <div class="eyebrow">Where we run</div>
+    <h2 style="margin-top:14px;font-size:var(--t-h2)">485 km. Six waypoints. <em>Every day.</em></h2>
+    <div class="rs-svg" aria-label="Route map from Mombasa to Nairobi">
+      <svg viewBox="0 0 1000 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="rsGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF6B1A"/><stop offset="1" stop-color="#FFB347"/></linearGradient></defs>
+        <path class="rs-base" d="M 40 85 C 200 60 300 105 460 85 S 780 60 960 85"/>
+        <path class="rs-line" d="M 40 85 C 200 60 300 105 460 85 S 780 60 960 85"/>
+        <circle class="rs-dot" cx="40" cy="85" r="7"/>
+        <circle class="rs-dot" cx="215" cy="70" r="5"/>
+        <circle class="rs-dot" cx="410" cy="88" r="5"/>
+        <circle class="rs-dot" cx="600" cy="78" r="5"/>
+        <circle class="rs-dot" cx="790" cy="68" r="5"/>
+        <circle class="rs-dot" cx="960" cy="85" r="7"/>
+        <text class="rs-label" x="40" y="115" text-anchor="middle">Mombasa</text>
+        <text class="rs-km" x="40" y="131" text-anchor="middle">0 km</text>
+        <text class="rs-label" x="215" y="47" text-anchor="middle">Mariakani</text>
+        <text class="rs-km" x="215" y="33" text-anchor="middle">36 km</text>
+        <text class="rs-label" x="410" y="118" text-anchor="middle">Voi</text>
+        <text class="rs-km" x="410" y="134" text-anchor="middle">160 km</text>
+        <text class="rs-label" x="600" y="55" text-anchor="middle">Mtito Andei</text>
+        <text class="rs-km" x="600" y="41" text-anchor="middle">290 km</text>
+        <text class="rs-label" x="790" y="45" text-anchor="middle">Machakos</text>
+        <text class="rs-km" x="790" y="31" text-anchor="middle">420 km</text>
+        <text class="rs-label" x="960" y="115" text-anchor="middle">Nairobi</text>
+        <text class="rs-km" x="960" y="131" text-anchor="middle">485 km</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="values">
+  <div class="wrap">
+    <div class="eyebrow">What we stand on</div>
+    <h2 style="margin-top:14px;font-size:var(--t-h2)">Three values. <em>Non-negotiable.</em></h2>
+    <div class="val-grid">
+      <div class="val-card">
+        <div class="num">01 · ACCOUNTABILITY</div>
+        <h3>A number for every load</h3>
+        <p>Nothing moves without a tracking number, a manifest entry and a photograph. If you can't check on it, we didn't do our job.</p>
+      </div>
+      <div class="val-card">
+        <div class="num">02 · CARE</div>
+        <h3>Netted, not thrown</h3>
+        <p>Loose cargo is personal cargo — someone's stock, someone's furniture. It's weighed, wrapped where needed, netted down and signed for.</p>
+      </div>
+      <div class="val-card">
+        <div class="num">03 · SPEED</div>
+        <h3>Hours, not vibes</h3>
+        <p>Under 9 hours on the corridor. Same-day in Nairobi. Quotes in 30 minutes. We put numbers on promises so you can plan around them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="app-teaser">
+  <div class="wrap">
+    <div class="app-split">
+      <div class="app-copy">
+        <div class="eyebrow">In development</div>
+        <h2 style="margin-top:14px">The Omni <em>app.</em></h2>
+        <p>Booking, live tracking, invoices and saved locations — in your pocket. The customer app is in development; try the interactive concept right now in your browser.</p>
+        <div class="row">
+          <a class="btn-primary" href="app.html">Try the interactive demo</a>
+        </div>
+      </div>
+      <div class="phone-frame" aria-hidden="true">
+        <div class="pf-head">
+          <img src="assets/logos/omni-symbol-white.svg" alt="" width="26" height="26">
+          <b>OMNI CARGO</b>
+        </div>
+        <div class="pf-card">
+          <div class="t">ACTIVE SHIPMENT</div>
+          <div class="v">OC-2026-10547</div>
+          <span class="pf-chip">IN TRANSIT · MTITO ANDEI</span>
+          <div class="pf-bar"></div>
+        </div>
+        <div class="pf-card">
+          <div class="t">NEXT INVOICE</div>
+          <div class="v">KES 8,500 · M-PESA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="wrap">
+    <h2>Move with <em>us.</em></h2>
+    <p>First load? Mention this page and we'll walk you through it on WhatsApp.</p>
+    <div class="row">
+      <a class="btn-primary" href="book.html">Book a Shipment</a>
+      <a class="btn-whatsapp" href="https://wa.me/254700000000?text=Hi%20Omni%20Cargo%2C%20my%20first%20load%20%E2%80%94%20talk%20me%20through%20it%3F" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-1.5-.5 11.6 11.6 0 0 1-4.4-3.9 5 5 0 0 1-1-2.7c0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c0 .2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.2 2.1 1.3.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3 0 .2 0 .7-.2 1.2Z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a class="brand" href="index.html" aria-label="Omni Cargo home">
+        <img src="assets/logos/omni-symbol-white.svg" alt="" width="34" height="34" loading="lazy">
+        <span class="wm">OMNI<small>CARGO</small></span>
+      </a>
+      <p>Fast, secure, affordable cargo transportation. Mombasa ↔ Nairobi and anywhere within Nairobi.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Company</h4>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Our Services</a>
+      <a href="fleet.html">Fleet</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="foot-col">
+      <h4>Shipments</h4>
+      <a href="book.html">Book a Shipment</a>
+      <a href="track.html">Track Your Cargo</a>
+      <a href="pricing.html">Pricing &amp; Quotes</a>
+      <a href="app.html">App concept ↗</a>
+    </div>
+    <div class="foot-col">
+      <h4>Reach us</h4>
+      <span>Enterprise Road, Industrial Area, Nairobi</span>
+      <span>Shimanzi Road, Shimanzi, Mombasa</span>
+      <a href="tel:+254700000000">+254 700 000 000</a>
+      <a href="mailto:hello@omnicargo.co.ke">hello@omnicargo.co.ke</a>
+      <span>Mon–Sat · 07:00–19:00</span>
+    </div>
+  </div>
+  <div class="foot-note">
+    <span>© 2026 Omni Cargo. All rights reserved.</span>
+    <span>MOMBASA ↔ NAIROBI · <a href="track.html">TRACK A LOAD</a></span>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/254700000000" target="_blank" rel="noopener" aria-label="Chat with Omni Cargo on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-1.5-.5 11.6 11.6 0 0 1-4.4-3.9 5 5 0 0 1-1-2.7c0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c0 .2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.2 2.1 1.3.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3 0 .2 0 .7-.2 1.2Z"/></svg>
+</a>
+
+<script>
+(() => {
+  const burger = document.querySelector('.burger');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Omni Cargo App — Interactive Concept</title>
+<meta name="description" content="Interactive concept of the Omni Cargo customer app — book shipments, track cargo live, view invoices and saved locations. In development.">
+<link rel="canonical" href="https://omnicargo.co.ke/app.html">
+<meta name="theme-color" content="#0A1626">
+<link rel="icon" type="image/svg+xml" href="assets/logos/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Omni Cargo">
+<meta property="og:title" content="Omni Cargo App — Interactive Concept">
+<meta property="og:description" content="Book, track, pay — the Omni app concept, clickable in your browser.">
+<meta property="og:url" content="https://omnicargo.co.ke/app.html">
+<meta property="og:image" content="https://omnicargo.co.ke/assets/og/omni-og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://omnicargo.co.ke/assets/og/omni-og.png">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,700;10..72,800;10..72,900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --surface:#0A1626; --surface-2:#0F2035; --elevated:#142A44; --elevated-hi:#1B3554;
+  --accent:#FF6B1A; --accent-2:#FFB347; --accent-soft:rgba(255,107,26,.16);
+  --accent-glow:0 0 28px rgba(255,107,26,.45);
+  --text:#EEF3F9; --text-mute:#8CA3BC; --text-faint:#5D7590;
+  --hairline:rgba(238,243,249,.08); --hairline-hi:rgba(238,243,249,.18);
+  --shadow-card:0 12px 40px rgba(3,8,16,.5); --shadow-cta:0 8px 28px rgba(255,107,26,.35);
+  --whatsapp:#25D366; --ok:#25D366;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--surface);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.6;min-height:100svh}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--accent);color:#081020}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* ===== desktop stage / device frame ===== */
+.stage{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:34px 16px;position:relative;overflow:hidden}
+.stage .ghost{position:absolute;right:-6%;top:-18%;width:min(46vw,560px);opacity:.06;pointer-events:none}
+.stage-cap{margin-bottom:20px;text-align:center;position:relative;z-index:2}
+.stage-cap .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase}
+.stage-cap h1{font-family:'Big Shoulders',sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(24px,3.4vw,38px);margin-top:8px}
+.stage-cap p{color:var(--text-faint);font-size:13px;margin-top:6px}
+.stage-cap a{color:var(--text-mute);border-bottom:1px dashed var(--text-faint)}
+.stage-cap a:hover{color:var(--accent)}
+.device{width:390px;max-width:100%;height:780px;max-height:82svh;border-radius:44px;border:2px solid var(--hairline-hi);background:#081020;box-shadow:0 30px 80px rgba(3,8,16,.7);position:relative;overflow:hidden;z-index:2}
+.device::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:110px;height:26px;border-radius:999px;background:#050B14;z-index:30}
+@media (max-width:767px){
+  .stage{padding:0}
+  .stage-cap{display:none}
+  .device{width:100%;height:100svh;max-height:none;border-radius:0;border:0}
+  .device::before{display:none}
+}
+
+/* ===== app shell ===== */
+.app{position:absolute;inset:0;display:flex;flex-direction:column;background:linear-gradient(180deg,var(--surface) 0%,#0B1B30 100%)}
+.screens{flex:1;position:relative;overflow:hidden}
+.screen{position:absolute;inset:0;overflow-y:auto;padding:58px 20px 90px;opacity:0;visibility:hidden;transform:translateX(24px);transition:opacity .3s ease,transform .3s cubic-bezier(.22,1,.36,1),visibility .3s;scrollbar-width:none}
+.screen::-webkit-scrollbar{display:none}
+.screen.on{opacity:1;visibility:visible;transform:translateX(0)}
+
+/* tab bar */
+.tabs{flex:none;display:flex;background:rgba(8,16,32,.95);backdrop-filter:blur(14px);border-top:1px solid var(--hairline);padding:10px 8px calc(14px + env(safe-area-inset-bottom))}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--text-faint);font-size:10px;letter-spacing:.04em;padding:4px 0;border-radius:10px;transition:color .2s ease}
+.tab svg{width:22px;height:22px}
+.tab.on{color:var(--accent)}
+.tab:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+.tabs.hidden{display:none}
+
+/* shared atoms */
+.h-app{font-family:'Big Shoulders',sans-serif;font-weight:800;text-transform:uppercase;font-size:26px;line-height:1}
+.h-app em{font-style:normal;color:var(--accent)}
+.sub{color:var(--text-mute);font-size:13.5px;margin-top:6px}
+.card{background:var(--elevated);border:1px solid var(--hairline);border-radius:16px;padding:16px;box-shadow:var(--shadow-card)}
+.card + .card{margin-top:12px}
+.a-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;font:600 15px 'IBM Plex Sans',sans-serif;padding:15px;border-radius:14px;background:var(--accent);color:#081020;box-shadow:var(--shadow-cta);transition:transform .2s cubic-bezier(.22,1,.36,1);will-change:transform}
+.a-btn:hover{transform:translateY(-1px)}
+.a-btn:active{transform:scale(.98)}
+.a-btn.ghost{background:transparent;color:var(--text);border:1px solid var(--hairline-hi);box-shadow:none}
+.a-btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.a-btn:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+.a-input,.a-select{width:100%;font:400 15px 'IBM Plex Sans',sans-serif;color:var(--text);background:var(--surface-2);border:1px solid var(--hairline-hi);border-radius:12px;padding:14px 16px;transition:border-color .2s ease}
+.a-input:focus,.a-select:focus{outline:none;border-color:var(--accent)}
+.a-input::placeholder{color:var(--text-faint)}
+.a-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-mute);margin:14px 0 8px}
+.chip{display:inline-flex;align-items:center;gap:6px;font:500 9.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;padding:6px 11px;border-radius:999px}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.chip-active{color:#081020;background:linear-gradient(90deg,var(--accent),var(--accent-2));border:0;font-weight:600}
+.chip-active::before{background:#081020}
+.chip-done{color:var(--ok);border:1px solid rgba(37,211,102,.4);background:rgba(37,211,102,.08)}
+.trow{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dashed var(--hairline-hi);font-size:13px}
+.trow:last-child{border-bottom:0}
+.trow span{color:var(--text-mute)}
+.trow b{font-family:'IBM Plex Mono',monospace;font-weight:500;text-align:right;font-size:12.5px}
+.back-row{display:flex;align-items:center;gap:8px;color:var(--text-mute);font-size:13px;margin-bottom:14px}
+.back-row button{display:flex;align-items:center;gap:6px;color:var(--text-mute);font-size:13px;padding:4px 8px;margin-left:-8px;border-radius:8px}
+.back-row button:hover{color:var(--accent)}
+
+/* login */
+#scr-login{padding-top:90px;text-align:center}
+#scr-login .logo{width:74px;height:74px;margin:0 auto}
+#scr-login .wm{font-family:'Big Shoulders',sans-serif;font-weight:800;font-size:30px;letter-spacing:.02em;margin-top:14px}
+#scr-login .wm small{display:block;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.34em;color:var(--text-mute);margin-top:3px}
+#scr-login form{text-align:left;margin-top:34px}
+.demo-hint{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--text-faint)}
+.demo-hint b{color:var(--accent);font-weight:500}
+
+/* home */
+.hello{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.hello .hi{font-size:13px;color:var(--text-mute)}
+.hello .name{font-family:'Big Shoulders',sans-serif;font-weight:800;text-transform:uppercase;font-size:24px;line-height:1.05}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font:700 14px 'Big Shoulders',sans-serif;color:#081020}
+.ship-card .tn{font-family:'IBM Plex Mono',monospace;font-size:16px;letter-spacing:.06em;font-weight:500}
+.ship-card .route{color:var(--text-mute);font-size:12.5px;margin-top:3px}
+.pbar-mini{margin-top:14px;height:4px;border-radius:2px;background:var(--surface);position:relative}
+.pbar-mini .fill{position:absolute;left:0;top:0;bottom:0;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.pbar-mini .tk{position:absolute;top:50%;transform:translate(-50%,-50%);width:22px;height:14px}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.q-tile{background:var(--elevated);border:1px solid var(--hairline);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px;transition:transform .2s cubic-bezier(.22,1,.36,1),border-color .2s ease}
+.q-tile:hover{transform:translateY(-2px);border-color:var(--hairline-hi)}
+.q-tile svg{width:22px;height:22px;color:var(--accent)}
+.q-tile b{font-size:13.5px;font-weight:600;text-align:left}
+.q-tile span{font-size:11px;color:var(--text-faint);text-align:left}
+
+/* track screen */
+.route-mini{margin:16px 0 4px}
+.route-mini svg{width:100%;height:auto}
+.tl-app{list-style:none;margin-top:8px}
+.tl-app li{position:relative;padding:0 0 18px 26px}
+.tl-app li::before{content:"";position:absolute;left:5px;top:14px;bottom:-2px;border-left:2px dashed var(--hairline-hi)}
+.tl-app li:last-child::before{display:none}
+.tl-app .dot{position:absolute;left:0;top:4px;width:11px;height:11px;border-radius:50%;background:var(--surface);border:2px solid var(--text-faint)}
+.tl-app li.done .dot{background:var(--accent);border-color:var(--accent)}
+.tl-app li.now .dot{background:var(--accent-2);border-color:var(--accent-2);box-shadow:0 0 0 4px var(--accent-soft)}
+.tl-app .ts{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--text-faint);text-transform:uppercase}
+.tl-app h4{font-size:13.5px;font-weight:600;margin-top:2px}
+.tl-app li.pending h4{color:var(--text-faint);font-weight:500}
+
+/* book steps */
+.pillrow{display:flex;gap:8px;flex-wrap:wrap}
+.pillrow button{font:500 12.5px 'IBM Plex Sans',sans-serif;padding:10px 14px;border-radius:999px;border:1px solid var(--hairline-hi);color:var(--text-mute);transition:all .2s ease}
+.pillrow button.on{background:var(--accent-soft);border-color:var(--accent);color:var(--text)}
+.stepdots{display:flex;gap:6px;margin:4px 0 16px}
+.stepdots i{height:3px;flex:1;border-radius:2px;background:var(--surface-2)}
+.stepdots i.on{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+
+/* payments */
+.inv .amt{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:500}
+.inv .meta{color:var(--text-faint);font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.06em;margin-top:2px}
+.inv-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.paybtn{font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.08em;padding:9px 14px;border-radius:999px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.35);color:var(--ok)}
+.paybtn:disabled{opacity:.45}
+/* mpesa sheet */
+.sheet-veil{position:absolute;inset:0;background:rgba(4,9,18,.7);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s;z-index:20}
+.sheet-veil.on{opacity:1;visibility:visible}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--elevated);border-radius:22px 22px 0 0;border-top:1px solid var(--hairline-hi);padding:24px 20px calc(28px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .35s cubic-bezier(.22,1,.36,1);z-index:21}
+.sheet-veil.on .sheet{transform:translateY(0)}
+.sheet .grab{width:44px;height:4px;border-radius:2px;background:var(--hairline-hi);margin:0 auto 18px}
+.sheet h3{font-family:'Big Shoulders',sans-serif;font-weight:800;text-transform:uppercase;font-size:20px}
+.sheet .mp{color:var(--ok);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;margin-top:2px}
+.sheet .big-amt{font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:500;margin:16px 0 4px}
+.sheet p{color:var(--text-mute);font-size:13px}
+
+/* locations */
+.loc-card{display:flex;align-items:center;gap:12px}
+.loc-card .pin{flex:none;width:38px;height:38px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.loc-card b{font-size:14px;display:block}
+.loc-card span{font-size:12px;color:var(--text-faint)}
+
+/* support */
+.sup-row{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px dashed var(--hairline-hi)}
+.sup-row:last-child{border-bottom:0}
+.sup-row .ic{flex:none;width:38px;height:38px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.sup-row.wa .ic{background:rgba(37,211,102,.12);color:var(--ok)}
+.sup-row b{font-size:14px;display:block}
+.sup-row span{font-size:11.5px;color:var(--text-faint);font-family:'IBM Plex Mono',monospace}
+
+.note-dev{margin-top:18px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:var(--text-faint);text-transform:uppercase}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+}
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <svg class="ghost" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+    <path d="M 52.67 24.48 A 22 22 0 1 1 39.52 11.33" stroke="#EEF3F9" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M 20 41.5 C 31 49.5, 46 19.5, 53 12" stroke="#FF6B1A" stroke-width="1.2" stroke-linecap="round"/>
+  </svg>
+  <div class="stage-cap">
+    <div class="eyebrow">Interactive concept — in development</div>
+    <h1>The Omni Cargo App</h1>
+    <p>Click through the real flows: login → book → track → pay. <a href="index.html">← Back to the website</a></p>
+  </div>
+
+  <div class="device">
+    <div class="app">
+      <div class="screens">
+
+        <!-- LOGIN -->
+        <section class="screen on" id="scr-login">
+          <svg class="logo" viewBox="0 0 64 64" fill="none">
+            <path d="M 52.67 24.48 A 22 22 0 1 1 39.52 11.33" stroke="#EEF3F9" stroke-width="6" stroke-linecap="round"/>
+            <path d="M 20 41.5 C 31 49.5, 46 19.5, 53 12" stroke="#FF6B1A" stroke-width="6" stroke-linecap="round"/>
+            <path d="M 58.1 6.9 L 56.5 14.5 L 50.5 8.5 Z" fill="#FF6B1A"/>
+          </svg>
+          <div class="wm">OMNI<small>CARGO</small></div>
+          <form id="loginForm">
+            <label class="a-label" for="lphone">Phone number</label>
+            <input class="a-input mono" id="lphone" type="tel" placeholder="07XX XXX XXX" autocomplete="tel">
+            <label class="a-label" for="lotp">OTP code</label>
+            <input class="a-input mono" id="lotp" inputmode="numeric" placeholder="• • • •" maxlength="4">
+            <div style="margin-top:20px"><button class="a-btn" type="submit">Sign in</button></div>
+            <div class="demo-hint">DEMO — any phone · OTP <b>0000</b></div>
+          </form>
+        </section>
+
+        <!-- HOME -->
+        <section class="screen" id="scr-home">
+          <div class="hello">
+            <div>
+              <div class="hi">Habari,</div>
+              <div class="name" id="userName">Trader</div>
+            </div>
+            <div class="avatar" id="userAv">T</div>
+          </div>
+          <div class="card ship-card" id="homeShip">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+              <div>
+                <div class="tn">OC-2026-10547</div>
+                <div class="route">Shimanzi, MSA → Kariobangi, NBO</div>
+              </div>
+              <span class="chip chip-active">IN TRANSIT</span>
+            </div>
+            <div class="pbar-mini">
+              <div class="fill" style="width:62%"></div>
+              <svg class="tk" style="left:62%" viewBox="0 0 34 22" fill="none"><rect x="1" y="4" width="21" height="13" rx="3" fill="#FF6B1A"/><path d="M22 8h6l4 5v4h-10V8Z" fill="#FF6B1A"/><circle cx="9" cy="18" r="3" fill="#081020" stroke="#FF6B1A" stroke-width="1.6"/><circle cx="26" cy="18" r="3" fill="#081020" stroke="#FF6B1A" stroke-width="1.6"/></svg>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:10px">
+              <span class="mono" style="font-size:10px;color:var(--text-faint);letter-spacing:.1em">MTITO ANDEI · 290 KM</span>
+              <span class="mono" style="font-size:10px;color:var(--accent);letter-spacing:.1em">ETA 21:40</span>
+            </div>
+            <button class="a-btn ghost" style="margin-top:14px;padding:11px" data-go="scr-track">View journey</button>
+          </div>
+          <div class="quick">
+            <button class="q-tile" data-go="scr-book">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              <b>Book shipment</b><span>Corridor or Nairobi</span>
+            </button>
+            <button class="q-tile" data-go="scr-track">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              <b>Track cargo</b><span>Live status</span>
+            </button>
+            <button class="q-tile" data-go="scr-pay">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>
+              <b>Payments</b><span>Invoices &amp; M-Pesa</span>
+            </button>
+            <button class="q-tile" data-go="scr-profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg>
+              <b>Profile</b><span>Locations &amp; support</span>
+            </button>
+          </div>
+          <div class="note-dev">Concept preview · simulated data</div>
+        </section>
+
+        <!-- BOOK -->
+        <section class="screen" id="scr-book">
+          <div class="back-row"><button data-go="scr-home"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</button></div>
+          <div class="h-app">Book a <em>shipment</em></div>
+          <div class="sub" id="bkHint">Route &amp; addresses</div>
+          <div class="stepdots" style="margin-top:14px"><i class="on" id="bd1"></i><i id="bd2"></i><i id="bd3"></i></div>
+
+          <div id="bk1">
+            <label class="a-label">Route</label>
+            <div class="pillrow" id="bkRoute">
+              <button type="button" class="on">MSA → NBO</button>
+              <button type="button">NBO → MSA</button>
+              <button type="button">Within NBO</button>
+            </div>
+            <label class="a-label" for="bkFrom">Pickup</label>
+            <input class="a-input" id="bkFrom" placeholder="e.g. Shimanzi Road, Mombasa">
+            <label class="a-label" for="bkTo">Delivery</label>
+            <input class="a-input" id="bkTo" placeholder="e.g. Kariobangi, Nairobi">
+            <div style="margin-top:20px"><button class="a-btn" id="bkNext1">Next — cargo</button></div>
+          </div>
+
+          <div id="bk2" style="display:none">
+            <label class="a-label" for="bkCargo">What are we moving?</label>
+            <input class="a-input" id="bkCargo" placeholder="e.g. 6 boxes of electronics">
+            <label class="a-label" for="bkWeight">Weight band</label>
+            <select class="a-select" id="bkWeight">
+              <option>Up to 100 kg</option><option selected>100 – 300 kg</option>
+              <option>300 – 500 kg</option><option>500 – 1,000 kg</option>
+            </select>
+            <div style="display:flex;gap:10px;margin-top:20px">
+              <button class="a-btn ghost" id="bkBack2" style="flex:1">Back</button>
+              <button class="a-btn" id="bkNext2" style="flex:2">Review</button>
+            </div>
+          </div>
+
+          <div id="bk3" style="display:none">
+            <div class="card">
+              <div class="trow"><span>Route</span><b id="rvRoute">MSA → NBO</b></div>
+              <div class="trow"><span>Pickup</span><b id="rvFrom">—</b></div>
+              <div class="trow"><span>Delivery</span><b id="rvTo">—</b></div>
+              <div class="trow"><span>Cargo</span><b id="rvCargo">—</b></div>
+              <div class="trow"><span>Weight</span><b id="rvWeight">—</b></div>
+              <div class="trow"><span>Est. price</span><b style="color:var(--accent)" id="rvPrice">KES 4,500</b></div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:16px">
+              <button class="a-btn ghost" id="bkBack3" style="flex:1">Back</button>
+              <button class="a-btn" id="bkConfirm" style="flex:2">Confirm booking</button>
+            </div>
+          </div>
+
+          <div id="bk4" style="display:none;text-align:center;padding-top:26px">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin:0 auto">
+              <circle cx="32" cy="32" r="29" stroke="#25D366" stroke-width="3"/>
+              <path d="M20 33.5 28.5 42 45 24" stroke="#25D366" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="h-app" style="margin-top:18px">Booked<em>.</em></div>
+            <p class="sub">Dispatch confirms your pickup window within 30 minutes.</p>
+            <div class="card" style="margin-top:18px;text-align:left">
+              <div class="trow"><span>Tracking number</span><b class="mono" style="color:var(--accent)" id="newTn">OC-2026-10578</b></div>
+              <div class="trow"><span>Status</span><b>BOOKED</b></div>
+            </div>
+            <div style="margin-top:16px"><button class="a-btn" data-go="scr-track">Track it now</button></div>
+          </div>
+        </section>
+
+        <!-- TRACK -->
+        <section class="screen" id="scr-track">
+          <div class="back-row"><button data-go="scr-home"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</button></div>
+          <div class="h-app">Live <em>tracking</em></div>
+          <div class="card" style="margin-top:16px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+              <div>
+                <div class="tn mono" style="font-size:15px;font-weight:500">OC-2026-10547</div>
+                <div class="route" style="color:var(--text-mute);font-size:12px;margin-top:2px">Shimanzi → Kariobangi · 6 pieces · ≤500 kg</div>
+              </div>
+              <span class="chip chip-active">IN TRANSIT</span>
+            </div>
+            <div class="route-mini">
+              <svg viewBox="0 0 320 64" fill="none">
+                <defs><linearGradient id="ag" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF6B1A"/><stop offset="1" stop-color="#FFB347"/></linearGradient></defs>
+                <path d="M 14 40 C 80 26 140 50 200 36 S 290 30 306 38" stroke="rgba(238,243,249,.14)" stroke-width="2" stroke-dasharray="3 6"/>
+                <path d="M 14 40 C 80 26 140 50 200 36" stroke="url(#ag)" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="14" cy="40" r="5" fill="#FF6B1A"/>
+                <circle cx="105" cy="36" r="4" fill="#FF6B1A"/>
+                <circle cx="200" cy="36" r="4" fill="#FFB347"/>
+                <circle cx="306" cy="38" r="5" fill="#0F2035" stroke="#5D7590" stroke-width="2"/>
+                <text x="14" y="58" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#5D7590" text-anchor="middle">MSA</text>
+                <text x="105" y="24" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#5D7590" text-anchor="middle">VOI</text>
+                <text x="200" y="22" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#FFB347" text-anchor="middle">MTITO ANDEI</text>
+                <text x="306" y="58" font-family="IBM Plex Mono,monospace" font-size="8.5" fill="#5D7590" text-anchor="middle">NBO</text>
+              </svg>
+            </div>
+          </div>
+          <div class="card">
+            <ol class="tl-app">
+              <li class="done"><span class="dot"></span><span class="ts">FRI 06:39</span><h4>Booked</h4></li>
+              <li class="done"><span class="dot"></span><span class="ts">FRI 09:39</span><h4>Picked up — Shimanzi depot</h4></li>
+              <li class="now"><span class="dot"></span><span class="ts">FRI 10:39</span><h4>In transit — passed Mtito Andei</h4></li>
+              <li class="pending"><span class="dot"></span><span class="ts">— PENDING</span><h4>Arrive Nairobi depot</h4></li>
+              <li class="pending"><span class="dot"></span><span class="ts">— PENDING</span><h4>Out for delivery</h4></li>
+              <li class="pending"><span class="dot"></span><span class="ts">— PENDING</span><h4>Delivered</h4></li>
+            </ol>
+          </div>
+          <button class="a-btn ghost" style="margin-top:12px" onclick="window.open('https://wa.me/254700000000?text=Hi%2C%20asking%20about%20OC-2026-10547','_blank')">Ask dispatch about this load</button>
+        </section>
+
+        <!-- PAYMENTS -->
+        <section class="screen" id="scr-pay">
+          <div class="back-row"><button data-go="scr-home"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</button></div>
+          <div class="h-app">Payments &amp; <em>invoices</em></div>
+          <div class="sub">Pay with M-Pesa in two taps.</div>
+          <div class="card inv" style="margin-top:16px">
+            <div class="inv-row">
+              <div>
+                <div class="amt">KES 8,500</div>
+                <div class="meta">OC-2026-10547 · DUE ON DELIVERY</div>
+              </div>
+              <button class="paybtn" id="payNow">PAY M-PESA</button>
+            </div>
+          </div>
+          <div class="card inv">
+            <div class="inv-row">
+              <div>
+                <div class="amt">KES 2,000</div>
+                <div class="meta">OC-2026-10562 · PAID · MPX9K3L2QT</div>
+              </div>
+              <span class="chip chip-done">PAID</span>
+            </div>
+          </div>
+          <div class="card inv">
+            <div class="inv-row">
+              <div>
+                <div class="amt">KES 4,500</div>
+                <div class="meta">OC-2026-10481 · PAID · MPW2R8N4VD</div>
+              </div>
+              <span class="chip chip-done">PAID</span>
+            </div>
+          </div>
+          <div class="note-dev">Simulated — no real payments</div>
+        </section>
+
+        <!-- PROFILE (locations + support) -->
+        <section class="screen" id="scr-profile">
+          <div class="back-row"><button data-go="scr-home"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3 5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</button></div>
+          <div class="h-app">Saved <em>locations</em></div>
+          <div class="card loc-card" style="margin-top:16px">
+            <div class="pin"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><b>My shop — Kariobangi</b><span>Light Industries, gate 4, Nairobi</span></div>
+          </div>
+          <div class="card loc-card">
+            <div class="pin"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><b>Supplier — Shimanzi</b><span>Shimanzi Road, Mombasa</span></div>
+          </div>
+          <button class="a-btn ghost" style="margin-top:12px;padding:12px">+ Add location</button>
+
+          <div class="h-app" style="margin-top:28px">Support</div>
+          <div class="card" style="margin-top:14px">
+            <div class="sup-row wa">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg></div>
+              <div><b>WhatsApp dispatch</b><span>+254 700 000 000</span></div>
+            </div>
+            <div class="sup-row">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></div>
+              <div><b>Call us</b><span>MON–SAT 07:00–19:00</span></div>
+            </div>
+            <div class="sup-row">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+              <div><b>Email</b><span>hello@omnicargo.co.ke</span></div>
+            </div>
+          </div>
+          <button class="a-btn ghost" style="margin-top:16px" id="logoutBtn">Sign out</button>
+        </section>
+      </div>
+
+      <!-- M-Pesa sheet -->
+      <div class="sheet-veil" id="mpesaVeil">
+        <div class="sheet">
+          <div class="grab"></div>
+          <h3>Confirm payment</h3>
+          <div class="mp">M-PESA · STK PUSH</div>
+          <div class="big-amt">KES 8,500</div>
+          <p>Check your phone — enter your M-Pesa PIN to pay <b style="color:var(--text)">OMNI CARGO LTD</b> for shipment OC-2026-10547.</p>
+          <div style="display:flex;gap:10px;margin-top:20px">
+            <button class="a-btn ghost" id="mpCancel" style="flex:1">Cancel</button>
+            <button class="a-btn" id="mpDone" style="flex:2">Simulate PIN entry</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab bar -->
+      <nav class="tabs hidden" id="tabbar">
+        <button class="tab on" data-go="scr-home" aria-label="Home">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1Z"/></svg>
+          Home
+        </button>
+        <button class="tab" data-go="scr-book" aria-label="Book">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          Book
+        </button>
+        <button class="tab" data-go="scr-track" aria-label="Track">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          Track
+        </button>
+        <button class="tab" data-go="scr-pay" aria-label="Payments">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg>
+          Pay
+        </button>
+        <button class="tab" data-go="scr-profile" aria-label="Profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="8" r="4"/></svg>
+          Profile
+        </button>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const screens = document.querySelectorAll('.screen');
+  const tabs = document.querySelectorAll('.tab');
+  const tabbar = $('tabbar');
+
+  function go(id) {
+    screens.forEach(s => s.classList.toggle('on', s.id === id));
+    tabs.forEach(t => t.classList.toggle('on', t.dataset.go === id));
+    tabbar.classList.toggle('hidden', id === 'scr-login');
+    document.querySelector('#' + id).scrollTop = 0;
+  }
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-go]');
+    if (b) go(b.dataset.go);
+  });
+
+  /* ---- login (simulated; persists) ---- */
+  const KEY = 'omni_app_user';
+  $('loginForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const otp = $('lotp').value.trim();
+    if (otp !== '0000') { $('lotp').style.borderColor = '#FF4D4D'; $('lotp').value = ''; $('lotp').placeholder = 'OTP is 0000'; return; }
+    const phone = $('lphone').value.trim() || '0700 000 000';
+    localStorage.setItem(KEY, JSON.stringify({ phone }));
+    go('scr-home');
+  });
+  $('logoutBtn').addEventListener('click', () => { localStorage.removeItem(KEY); go('scr-login'); });
+  if (localStorage.getItem(KEY)) go('scr-home');
+
+  /* ---- booking flow ---- */
+  const PRICES = { 'MSA → NBO': ['KES 2,500','KES 4,500','KES 8,500','KES 14,000'], 'NBO → MSA': ['KES 2,500','KES 4,500','KES 8,500','KES 14,000'], 'Within NBO': ['KES 2,000','KES 2,000','KES 3,500','KES 6,500'] };
+  let route = 'MSA → NBO';
+  document.querySelectorAll('#bkRoute button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#bkRoute button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on'); route = b.textContent.trim();
+  }));
+  const show = n => {
+    ['bk1','bk2','bk3','bk4'].forEach((id,i) => $(id).style.display = (i === n-1) ? 'block' : 'none');
+    ['bd1','bd2','bd3'].forEach((id,i) => $(id).classList.toggle('on', i < Math.min(n,3)));
+    $('bkHint').textContent = ['Route & addresses','Cargo details','Review & confirm','Confirmed'][n-1];
+  };
+  $('bkNext1').addEventListener('click', () => {
+    if (!$('bkFrom').value.trim() || !$('bkTo').value.trim()) { $('bkFrom').style.borderColor = $('bkFrom').value.trim() ? '' : '#FF4D4D'; $('bkTo').style.borderColor = $('bkTo').value.trim() ? '' : '#FF4D4D'; return; }
+    show(2);
+  });
+  $('bkBack2').addEventListener('click', () => show(1));
+  $('bkNext2').addEventListener('click', () => {
+    if (!$('bkCargo').value.trim()) { $('bkCargo').style.borderColor = '#FF4D4D'; return; }
+    $('rvRoute').textContent = route;
+    $('rvFrom').textContent = $('bkFrom').value.trim().toUpperCase().slice(0, 24);
+    $('rvTo').textContent = $('bkTo').value.trim().toUpperCase().slice(0, 24);
+    $('rvCargo').textContent = $('bkCargo').value.trim().toUpperCase().slice(0, 24);
+    $('rvWeight').textContent = $('bkWeight').value.toUpperCase();
+    $('rvPrice').textContent = PRICES[route][$('bkWeight').selectedIndex] + ' (EST)';
+    show(3);
+  });
+  $('bkBack3').addEventListener('click', () => show(2));
+  $('bkConfirm').addEventListener('click', () => {
+    $('newTn').textContent = 'OC-2026-' + (10570 + Math.floor((Date.now() / 60000) % 400)).toString();
+    show(4);
+  });
+
+  /* ---- M-Pesa sheet ---- */
+  $('payNow').addEventListener('click', () => $('mpesaVeil').classList.add('on'));
+  $('mpCancel').addEventListener('click', () => $('mpesaVeil').classList.remove('on'));
+  $('mpDone').addEventListener('click', () => {
+    $('mpesaVeil').classList.remove('on');
+    const btn = $('payNow');
+    btn.textContent = 'PAID ✓'; btn.disabled = true;
+    btn.closest('.inv').querySelector('.meta').textContent = 'OC-2026-10547 · PAID · MPQ' + Math.random().toString(36).slice(2, 8).toUpperCase();
+  });
+
+  /* ---- static QA hook ---- */
+  if (new URLSearchParams(location.search).has('static')) go('scr-home');
+})();
+</script>
+</body>
+</html>

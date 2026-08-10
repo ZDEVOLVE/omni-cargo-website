@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /logo-lab.html
+Disallow: /app.html
+
+Sitemap: https://omnicargo.co.ke/sitemap.xml

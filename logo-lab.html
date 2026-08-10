@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omni Cargo — Logo Lab (internal)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,700;10..72,800;10..72,900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --surface:#0A1626; --surface-2:#0F2035; --elevated:#142A44;
+    --accent:#FF6B1A; --text:#EEF3F9; --text-mute:#8CA3BC;
+    --hairline:rgba(238,243,249,.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--surface);color:var(--text);font-family:'IBM Plex Sans',sans-serif;padding:48px}
+  h1{font-family:'Big Shoulders',sans-serif;font-weight:800;font-size:44px;letter-spacing:-.01em;margin-bottom:6px}
+  h2{font-family:'Big Shoulders',sans-serif;font-weight:700;font-size:26px;margin:56px 0 18px;border-top:1px solid var(--hairline);padding-top:32px}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.28em;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+  p.note{color:var(--text-mute);font-size:14px;line-height:1.7;max-width:640px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+  .card{background:var(--surface-2);border:1px solid var(--hairline);border-radius:14px;padding:28px;text-align:center}
+  .card.light{background:#F4F6F9}
+  .card h3{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;color:var(--text-mute);text-transform:uppercase;margin-bottom:18px;font-weight:500}
+  .card.light h3{color:#4A607A}
+  .card .stage{display:flex;align-items:center;justify-content:center;min-height:150px}
+  .caption{font-size:13px;color:var(--text-mute);margin-top:16px;line-height:1.6;text-align:left}
+  .card.light .caption{color:#4A607A}
+  .chosen{outline:2px solid var(--accent);outline-offset:2px}
+  .sizes{display:flex;align-items:flex-end;gap:36px;background:var(--surface-2);border:1px solid var(--hairline);border-radius:14px;padding:32px;flex-wrap:wrap}
+  .sizes.light{background:#F4F6F9}
+  .size-slot{text-align:center}
+  .size-slot span{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-mute);margin-top:10px}
+  .sizes.light .size-slot span{color:#4A607A}
+  .navrow{display:flex;align-items:center;gap:12px;background:var(--surface-2);border:1px solid var(--hairline);border-radius:14px;padding:22px 28px;margin-top:20px}
+  .navrow img{height:34px;width:34px}
+  .navrow .wm{font-family:'Big Shoulders',sans-serif;font-weight:800;font-size:23px;letter-spacing:.02em;line-height:1}
+  .navrow .wm small{display:block;font-family:'IBM Plex Sans',sans-serif;font-weight:600;font-size:9.5px;letter-spacing:.34em;color:var(--text-mute);margin-top:2px}
+</style>
+</head>
+<body>
+  <div class="eyebrow">Internal — brand development</div>
+  <h1>Omni Cargo Logo Lab</h1>
+  <p class="note">Three vector concepts explored below. Concept A — “The Omni Ring” — is the chosen direction: the O of Omni as a route-ring, broken at the north-east, with the cargo-orange route sweeping through the gap. Origin waypoint = Mombasa, arrowhead = Nairobi.</p>
+
+  <h2>Concept Board</h2>
+  <div class="grid">
+    <div class="card chosen">
+      <h3>A — The Omni Ring ✓</h3>
+      <div class="stage">
+        <svg viewBox="0 0 64 64" width="130" height="130" fill="none">
+          <path d="M 52.67 24.48 A 22 22 0 1 1 39.52 11.33" stroke="#EEF3F9" stroke-width="6" stroke-linecap="round"/>
+          <path d="M 20 41.5 C 31 49.5, 46 19.5, 53 12" stroke="#FF6B1A" stroke-width="6" stroke-linecap="round"/>
+          <path d="M 58.1 6.9 L 56.5 14.5 L 50.5 8.5 Z" fill="#FF6B1A"/>
+        </svg>
+      </div>
+      <div class="caption">Compass + orbital route + forward motion in one mark. Pure stroke geometry — survives 16&nbsp;px. Reads “we run the loop.”</div>
+    </div>
+    <div class="card">
+      <h3>B — Crate Forward</h3>
+      <div class="stage">
+        <svg viewBox="0 0 64 64" width="130" height="130" fill="none">
+          <path d="M 32 12 L 50 21 L 50 43 L 32 52 L 14 43 L 14 21 Z" stroke="#EEF3F9" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M 14 21 L 32 30 L 50 21 M 32 30 L 32 52" stroke="#EEF3F9" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M 36 44 L 45 37.5 L 36 31" stroke="#FF6B1A" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="caption">Honest — a loose-cargo crate in motion. But box marks are logistics wallpaper; weak differentiation.</div>
+    </div>
+    <div class="card">
+      <h3>C — A109 Waypoint</h3>
+      <div class="stage">
+        <svg viewBox="0 0 64 64" width="130" height="130" fill="none">
+          <rect x="8" y="8" width="48" height="48" rx="15" stroke="#EEF3F9" stroke-width="4"/>
+          <path d="M 17 44 L 27 35 L 34 39 L 46 20" stroke="#FF6B1A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="17" cy="44" r="3.4" fill="#EEF3F9"/>
+          <circle cx="46" cy="20" r="3.4" fill="#FF6B1A"/>
+        </svg>
+      </div>
+      <div class="caption">The Mombasa–Nairobi road profile between two nodes. Clever, but the polyline muddies at favicon size.</div>
+    </div>
+  </div>
+
+  <h2>Final Suite — Dark Surface</h2>
+  <div class="sizes">
+    <div class="size-slot"><img src="assets/logos/omni-symbol-white.svg" width="16" height="16" alt=""><span>16</span></div>
+    <div class="size-slot"><img src="assets/logos/omni-symbol-white.svg" width="32" height="32" alt=""><span>32</span></div>
+    <div class="size-slot"><img src="assets/logos/omni-symbol-white.svg" width="64" height="64" alt=""><span>64</span></div>
+    <div class="size-slot"><img src="assets/logos/omni-symbol-white.svg" width="140" height="140" alt=""><span>140</span></div>
+    <div class="size-slot"><img src="assets/logos/omni-white.svg" width="308" height="64" alt=""><span>lockup 308×64</span></div>
+    <div class="size-slot"><img src="assets/logos/favicon.svg" width="16" height="16" alt=""><span>favicon 16</span></div>
+    <div class="size-slot"><img src="assets/logos/favicon.svg" width="32" height="32" alt=""><span>favicon 32</span></div>
+    <div class="size-slot"><img src="assets/logos/favicon.svg" width="64" height="64" alt=""><span>favicon 64</span></div>
+  </div>
+
+  <h2>Final Suite — Light Surface</h2>
+  <div class="sizes light">
+    <div class="size-slot"><img src="assets/logos/omni-symbol-color.svg" width="32" height="32" alt=""><span>32</span></div>
+    <div class="size-slot"><img src="assets/logos/omni-symbol-color.svg" width="64" height="64" alt=""><span>64</span></div>
+    <div class="size-slot"><img src="assets/logos/omni-symbol-color.svg" width="140" height="140" alt=""><span>140</span></div>
+    <div class="size-slot"><img src="assets/logos/omni-color.svg" width="308" height="64" alt=""><span>lockup 308×64</span></div>
+  </div>
+
+  <h2>Nav Treatment (symbol SVG + HTML wordmark)</h2>
+  <div class="navrow">
+    <img src="assets/logos/omni-symbol-white.svg" alt="Omni Cargo">
+    <div class="wm">OMNI<small>CARGO</small></div>
+  </div>
+</body>
+</html>
