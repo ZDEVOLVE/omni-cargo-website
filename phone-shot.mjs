@@ -1,0 +1,10 @@
+import puppeteer from 'puppeteer';
+const browser = await puppeteer.launch({ headless: 'shell', protocolTimeout: 90000 });
+const page = await browser.newPage();
+await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+await page.goto('https://zdevolve.github.io/omni-cargo-website/', { waitUntil: 'networkidle0', timeout: 60000 });
+await new Promise(r => setTimeout(r, 2600));
+await page.evaluate(() => { if (window.gsap) { gsap.killTweensOf('*'); } const s=document.createElement('style'); s.textContent='*{animation-play-state:paused!important}'; document.head.appendChild(s); });
+await page.screenshot({ path: 'temporary screenshots/phone-live-hero.png' });
+await browser.close();
+console.log('saved');
