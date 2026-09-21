@@ -354,6 +354,13 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
 <script>
 (() => {
   const $ = id => document.getElementById(id);
+
+  /* Bookings sheet webhook — Google Apps Script URL goes here */
+  const SHEET_WEBHOOK = '';
+  const sendToSheet = (type, data) => {
+    if (!SHEET_WEBHOOK) return;
+    try { fetch(SHEET_WEBHOOK, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ type, ...data }).toString() }); } catch (_) {}
+  };
   const burger = document.querySelector('.burger');
   const menu = $('mobileMenu');
   burger.addEventListener('click', () => {
@@ -367,6 +374,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
     const phoneOk = /^(\+?254|0)?[17]\d{8}$/.test($('cphone').value.replace(/[\s-]/g, ''));
     const ok = $('cname').value.trim() && phoneOk && $('cmsg').value.trim().length > 2;
     $('cerr').style.display = ok ? 'none' : 'block';
+    sendToSheet('MESSAGE', { Name: $('cname').value.trim(), Phone: $('cphone').value.trim(), Message: $('cmsg').value.trim() });
     if (!ok) return;
     const msg = `*MESSAGE — OMNI CARGO SITE*%0A%0A*Name:* ${encodeURIComponent($('cname').value.trim())}%0A*Phone:* ${encodeURIComponent($('cphone').value.trim())}%0A%0A${encodeURIComponent($('cmsg').value.trim())}`;
     window.open(`https://wa.me/254790339935?text=${msg}`, '_blank', 'noopener');
