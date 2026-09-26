@@ -109,6 +109,10 @@ h1 em,h2 em,h3 em{font-style:normal;color:var(--accent)}
 .pill-group input:focus-visible + label{outline:2px solid var(--accent-2);outline-offset:3px}
 .f-input,.f-select,.f-textarea{width:100%;font:400 16px 'IBM Plex Sans',sans-serif;color:var(--text);background:var(--surface-2);border:1px solid var(--hairline-hi);border-radius:12px;padding:15px 18px;transition:border-color .25s ease,box-shadow .25s ease}
 .f-textarea{min-height:110px;resize:vertical;font-family:'IBM Plex Sans',sans-serif}
+.file-drop{display:flex;align-items:center;gap:12px;cursor:pointer;background:var(--surface-2);border:1.5px dashed var(--hairline-hi);border-radius:12px;padding:15px 18px;color:var(--text-mute);transition:border-color .2s ease,color .2s ease}
+.file-drop:hover{border-color:var(--accent);color:var(--text)}
+.file-drop svg{width:22px;height:22px;flex:none;color:var(--accent)}
+.file-drop.has-file{border-style:solid;border-color:var(--accent);color:var(--text)}
 .f-input:focus,.f-select:focus,.f-textarea:focus{outline:none;border-color:var(--accent);box-shadow:var(--accent-glow)}
 .f-input::placeholder,.f-textarea::placeholder{color:var(--text-faint)}
 .f-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238CA3BC' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center}
@@ -272,19 +276,30 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
             <div class="f-row">
               <div>
                 <label class="f-label" for="weight">Estimated weight</label>
-                <select class="f-select" id="weight">
-                  <option>Up to 100 kg</option>
-                  <option selected>100 – 300 kg</option>
-                  <option>300 – 500 kg</option>
-                  <option>500 – 1,000 kg</option>
-                  <option>Not sure — advise me</option>
-                </select>
+                <input class="f-input" id="weight" list="weights" placeholder="Pick or type — e.g. 250 kg" autocomplete="off">
+                <datalist id="weights">
+                  <option value="Up to 50 kg"></option>
+                  <option value="50 – 100 kg"></option>
+                  <option value="100 – 300 kg"></option>
+                  <option value="300 – 500 kg"></option>
+                  <option value="500 – 1,000 kg"></option>
+                  <option value="1 – 2 tonnes"></option>
+                  <option value="2 – 5 tonnes"></option>
+                  <option value="Over 5 tonnes"></option>
+                  <option value="Not sure — advise me"></option>
+                </datalist>
               </div>
               <div>
                 <label class="f-label" for="pieces">Number of pieces</label>
                 <input class="f-input" id="pieces" type="number" min="1" max="200" value="1">
               </div>
             </div>
+            <label class="f-label" for="photo">Photo of the load (optional)</label>
+            <label class="file-drop" id="photoDrop">
+              <input type="file" id="photo" accept="image/*" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+              <span id="photoText">Tap to add a photo — it helps us plan the load</span>
+            </label>
             <div class="f-err" id="err2">Please describe your cargo.</div>
             <div class="step-nav">
               <button class="btn-ghost" type="button" data-back="1">Back</button>
@@ -413,6 +428,36 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
     try { fetch(SHEET_WEBHOOK, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ type, ...data }).toString() }); } catch (_) {}
   };
 
+  /* ---- optional photo: resized client-side so the upload stays small ---- */
+  function readPhoto(input, maxDim, quality) {
+    return new Promise(resolve => {
+      const file = input && input.files && input.files[0];
+      if (!file || !/^image\//.test(file.type)) return resolve(null);
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const img = new Image();
+        img.onload = () => {
+          let w = img.width, h = img.height;
+          if (w > h && w > maxDim) { h = Math.round(h * maxDim / w); w = maxDim; }
+          else if (h > maxDim) { w = Math.round(w * maxDim / h); h = maxDim; }
+          const c = document.createElement('canvas'); c.width = w; c.height = h;
+          c.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve({ base64: c.toDataURL('image/jpeg', quality).split(',')[1], type: 'image/jpeg', name: (file.name || 'photo').replace(/\.[^.]+$/, '') + '.jpg' });
+        };
+        img.onerror = () => resolve(null);
+        img.src = ev.target.result;
+      };
+      reader.onerror = () => resolve(null);
+      reader.readAsDataURL(file);
+    });
+  }
+  const _photo = $('photo');
+  if (_photo) _photo.addEventListener('change', () => {
+    const f = _photo.files && _photo.files[0];
+    $('photoText').textContent = f ? f.name : 'Tap to add a photo — it helps us plan the load';
+    $('photoDrop').classList.toggle('has-file', !!f);
+  });
+
   /* ---- Mobile menu ---- */
   const burger = document.querySelector('.burger');
   const menu = $('mobileMenu');
@@ -460,9 +505,10 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
   document.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => goto(Number(b.dataset.back))));
 
   /* ---- submit → WhatsApp ---- */
-  $('bookForm').addEventListener('submit', e => {
+  $('bookForm').addEventListener('submit', async e => {
     e.preventDefault();
     if (!validate(3)) return;
+    const btn = $('submitBtn'); if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
     const route = document.querySelector('input[name="route"]:checked').value;
     const data = {
       Route: route,
@@ -470,21 +516,25 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
       Delivery: $('dropoff').value.trim(),
       Date: $('pdate').value || 'ASAP',
       Cargo: $('cargo').value.trim(),
-      Weight: $('weight').value,
+      Weight: $('weight').value.trim() || 'Not sure',
       Pieces: $('pieces').value,
       Name: $('name').value.trim(),
       Phone: $('phone').value.trim(),
       Email: $('email').value.trim(),
       Note: $('note').value.trim() || '—'
     };
+    const photo = await readPhoto($('photo'), 1200, 0.72);
+    if (photo) { data.Photo = photo.base64; data.PhotoType = photo.type; data.PhotoName = photo.name; }
     sendToSheet('BOOKING', data);
 
     // success state
     document.querySelectorAll('.step').forEach(s => s.classList.remove('on'));
     document.getElementById('stepper').style.display = 'none';
     $('sumRows').innerHTML = Object.entries(data)
+      .filter(([k]) => ['Photo', 'PhotoType', 'PhotoName'].indexOf(k) === -1)
       .filter(([k]) => k !== 'Note' || data.Note !== '—')
       .map(([k, v]) => `<div class="row"><span>${k}</span><b>${v}</b></div>`).join('');
+    if (photo) $('sumRows').insertAdjacentHTML('beforeend', '<div class="row"><span>Photo</span><b>Attached ✓</b></div>');
     $('success').style.display = 'block';
   });
 

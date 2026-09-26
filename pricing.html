@@ -125,6 +125,10 @@ h1 em,h2 em,h3 em{font-style:normal;color:var(--accent)}
 .f-label:first-of-type{margin-top:0}
 .f-input,.f-select{width:100%;font:400 16px 'IBM Plex Sans',sans-serif;color:var(--text);background:var(--surface-2);border:1px solid var(--hairline-hi);border-radius:12px;padding:15px 18px;transition:border-color .25s ease,box-shadow .25s ease}
 .f-input:focus,.f-select:focus{outline:none;border-color:var(--accent);box-shadow:var(--accent-glow)}
+.file-drop{display:flex;align-items:center;gap:12px;cursor:pointer;background:var(--surface-2);border:1.5px dashed var(--hairline-hi);border-radius:12px;padding:15px 18px;color:var(--text-mute);transition:border-color .2s ease,color .2s ease}
+.file-drop:hover{border-color:var(--accent);color:var(--text)}
+.file-drop svg{width:22px;height:22px;flex:none;color:var(--accent)}
+.file-drop.has-file{border-style:solid;border-color:var(--accent);color:var(--text)}
 .f-input::placeholder{color:var(--text-faint)}
 .f-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238CA3BC' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center}
 .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -293,15 +297,26 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
           </div>
         </div>
         <label class="f-label" for="qweight">Estimated weight</label>
-        <select class="f-select" id="qweight">
-          <option>Up to 100 kg</option>
-          <option selected>100 – 300 kg</option>
-          <option>300 – 500 kg</option>
-          <option>500 – 1,000 kg</option>
-          <option>Not sure — advise me</option>
-        </select>
+        <input class="f-input" id="qweight" list="qweights" placeholder="Pick or type — e.g. 250 kg" autocomplete="off">
+        <datalist id="qweights">
+          <option value="Up to 50 kg"></option>
+          <option value="50 – 100 kg"></option>
+          <option value="100 – 300 kg"></option>
+          <option value="300 – 500 kg"></option>
+          <option value="500 – 1,000 kg"></option>
+          <option value="1 – 2 tonnes"></option>
+          <option value="2 – 5 tonnes"></option>
+          <option value="Over 5 tonnes"></option>
+          <option value="Not sure — advise me"></option>
+        </datalist>
         <label class="f-label" for="qcargo">What are we moving?</label>
         <input class="f-input" id="qcargo" placeholder="e.g. 10 cartons of shop stock">
+        <label class="f-label" for="qphoto">Photo of the load (optional)</label>
+        <label class="file-drop" id="qphotoDrop">
+          <input type="file" id="qphoto" accept="image/*" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          <span id="qphotoText">Tap to add a photo — it helps us quote accurately</span>
+        </label>
         <div class="f-row">
           <div>
             <label class="f-label" for="qname">Your name</label>
@@ -375,6 +390,35 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
     if (!SHEET_WEBHOOK) return;
     try { fetch(SHEET_WEBHOOK, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ type, ...data }).toString() }); } catch (_) {}
   };
+
+  function readPhoto(input, maxDim, quality) {
+    return new Promise(resolve => {
+      const file = input && input.files && input.files[0];
+      if (!file || !/^image\//.test(file.type)) return resolve(null);
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const img = new Image();
+        img.onload = () => {
+          let w = img.width, h = img.height;
+          if (w > h && w > maxDim) { h = Math.round(h * maxDim / w); w = maxDim; }
+          else if (h > maxDim) { w = Math.round(w * maxDim / h); h = maxDim; }
+          const c = document.createElement('canvas'); c.width = w; c.height = h;
+          c.getContext('2d').drawImage(img, 0, 0, w, h);
+          resolve({ base64: c.toDataURL('image/jpeg', quality).split(',')[1], type: 'image/jpeg', name: (file.name || 'photo').replace(/\.[^.]+$/, '') + '.jpg' });
+        };
+        img.onerror = () => resolve(null);
+        img.src = ev.target.result;
+      };
+      reader.onerror = () => resolve(null);
+      reader.readAsDataURL(file);
+    });
+  }
+  const _qphoto = $('qphoto');
+  if (_qphoto) _qphoto.addEventListener('change', () => {
+    const f = _qphoto.files && _qphoto.files[0];
+    $('qphotoText').textContent = f ? f.name : 'Tap to add a photo — it helps us quote accurately';
+    $('qphotoDrop').classList.toggle('has-file', !!f);
+  });
   const burger = document.querySelector('.burger');
   const menu = $('mobileMenu');
   burger.addEventListener('click', () => {
@@ -383,7 +427,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
     document.body.style.overflow = open ? 'hidden' : '';
   });
 
-  $('quoteForm').addEventListener('submit', e => {
+  $('quoteForm').addEventListener('submit', async e => {
     e.preventDefault();
     const phoneOk = /^(\+?254|0)?[17]\d{8}$/.test($('qphone').value.replace(/[\s-]/g, ''));
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('qemail').value.trim());
@@ -392,9 +436,11 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
     if (!ok) return;
     const data = {
       Route: $('qroute').value, Pickup: $('qpickup').value.trim(), Delivery: $('qdelivery').value.trim(),
-      Weight: $('qweight').value, Cargo: $('qcargo').value.trim(),
+      Weight: $('qweight').value.trim() || 'Not sure', Cargo: $('qcargo').value.trim(),
       Name: $('qname').value.trim(), Phone: $('qphone').value.trim(), Email: $('qemail').value.trim()
     };
+    const photo = await readPhoto($('qphoto'), 1200, 0.72);
+    if (photo) { data.Photo = photo.base64; data.PhotoType = photo.type; data.PhotoName = photo.name; }
     sendToSheet('QUOTE', data);
     $('qok').style.display = 'block';
   });
