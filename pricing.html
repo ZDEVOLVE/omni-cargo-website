@@ -302,7 +302,9 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
             <input class="f-input" id="qphone" type="tel" placeholder="07XX XXX XXX" autocomplete="tel">
           </div>
         </div>
-        <div class="f-err" id="qerr">Please describe the cargo and add your name and phone.</div>
+        <label class="f-label" for="qemail">Email</label>
+        <input class="f-input" id="qemail" type="email" placeholder="you@email.com" autocomplete="email">
+        <div class="f-err" id="qerr">Please add your name, phone, email and cargo.</div>
         <button class="btn-primary" type="submit">Send quote request via WhatsApp</button>
         <div class="q-ok" id="qok"><b>Sent.</b> We reply within 30 minutes (Mon–Sat 07:00–19:00). Keep WhatsApp open.</div>
       </form>
@@ -357,8 +359,8 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
 (() => {
   const $ = id => document.getElementById(id);
 
-  /* Bookings sheet webhook — Google Apps Script URL goes here */
-  const SHEET_WEBHOOK = '';
+  /* Bookings sheet webhook — paste your Google Apps Script /exec URL here */
+  const SHEET_WEBHOOK = 'https://script.google.com/macros/s/AKfycbxRAyh3y0EOXDgAge4FWGBmsRrsR6GUlCB0xPxZEEIgojZluliMFvFTZxaPK5AjXgocSw/exec';
   const sendToSheet = (type, data) => {
     if (!SHEET_WEBHOOK) return;
     try { fetch(SHEET_WEBHOOK, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams({ type, ...data }).toString() }); } catch (_) {}
@@ -374,12 +376,13 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
   $('quoteForm').addEventListener('submit', e => {
     e.preventDefault();
     const phoneOk = /^(\+?254|0)?[17]\d{8}$/.test($('qphone').value.replace(/[\s-]/g, ''));
-    const ok = $('qcargo').value.trim().length > 2 && $('qname').value.trim() && phoneOk;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('qemail').value.trim());
+    const ok = $('qcargo').value.trim().length > 2 && $('qname').value.trim() && phoneOk && emailOk;
     $('qerr').style.display = ok ? 'none' : 'block';
     if (!ok) return;
     const data = {
       Route: $('qroute').value, Weight: $('qweight').value, Cargo: $('qcargo').value.trim(),
-      Name: $('qname').value.trim(), Phone: $('qphone').value.trim()
+      Name: $('qname').value.trim(), Phone: $('qphone').value.trim(), Email: $('qemail').value.trim()
     };
     sendToSheet('QUOTE', data);
     const msg = `*QUOTE REQUEST — OMNI CARGO*%0A%0A` + Object.entries(data)
