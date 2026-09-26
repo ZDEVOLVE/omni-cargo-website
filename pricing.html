@@ -282,6 +282,16 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
           <option>Nairobi → Mombasa</option>
           <option>Within Nairobi</option>
         </select>
+        <div class="f-row">
+          <div>
+            <label class="f-label" for="qpickup">Pickup area</label>
+            <input class="f-input" id="qpickup" placeholder="e.g. Shimanzi, Mombasa">
+          </div>
+          <div>
+            <label class="f-label" for="qdelivery">Delivery area</label>
+            <input class="f-input" id="qdelivery" placeholder="e.g. Industrial Area, Nairobi">
+          </div>
+        </div>
         <label class="f-label" for="qweight">Estimated weight</label>
         <select class="f-select" id="qweight">
           <option>Up to 100 kg</option>
@@ -381,7 +391,8 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
     $('qerr').style.display = ok ? 'none' : 'block';
     if (!ok) return;
     const data = {
-      Route: $('qroute').value, Weight: $('qweight').value, Cargo: $('qcargo').value.trim(),
+      Route: $('qroute').value, Pickup: $('qpickup').value.trim(), Delivery: $('qdelivery').value.trim(),
+      Weight: $('qweight').value, Cargo: $('qcargo').value.trim(),
       Name: $('qname').value.trim(), Phone: $('qphone').value.trim(), Email: $('qemail').value.trim()
     };
     sendToSheet('QUOTE', data);
