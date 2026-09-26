@@ -285,7 +285,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
       <div class="msg-copy">
         <div class="eyebrow">Send a message</div>
         <h2 style="margin-top:14px">We answer in <em>minutes.</em></h2>
-        <p>Your message goes straight to the dispatch WhatsApp — same desk that prices quotes and schedules pickups.</p>
+        <p>Your message reaches our dispatch team — the same desk that prices quotes and schedules pickups.</p>
       </div>
       <form class="m-card" id="msgForm" novalidate>
         <div class="f-row">
@@ -303,8 +303,8 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
         <label class="f-label" for="cmsg">Message</label>
         <textarea class="f-textarea" id="cmsg" placeholder="How can we help?"></textarea>
         <div class="f-err" id="cerr">Please add your name, phone, email and a message.</div>
-        <button class="btn-primary" type="submit">Send via WhatsApp</button>
-        <div class="m-ok" id="cok"><b>Sent.</b> Watch your WhatsApp — we reply fast during working hours.</div>
+        <button class="btn-primary" type="submit">Send message</button>
+        <div class="m-ok" id="cok"><b>Sent.</b> You'll receive a confirmation email shortly — we reply fast during working hours.</div>
       </form>
     </div>
   </div>
@@ -379,8 +379,6 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
     $('cerr').style.display = ok ? 'none' : 'block';
     if (!ok) return;
     sendToSheet('MESSAGE', { Name: $('cname').value.trim(), Phone: $('cphone').value.trim(), Email: $('cemail').value.trim(), Message: $('cmsg').value.trim() });
-    const msg = `*MESSAGE — OMNI CARGO SITE*%0A%0A*Name:* ${encodeURIComponent($('cname').value.trim())}%0A*Phone:* ${encodeURIComponent($('cphone').value.trim())}%0A%0A${encodeURIComponent($('cmsg').value.trim())}`;
-    window.open(`https://wa.me/254790339935?text=${msg}`, '_blank', 'noopener');
     $('cok').style.display = 'block';
   });
 })();

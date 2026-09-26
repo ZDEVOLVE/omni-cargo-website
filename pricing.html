@@ -305,8 +305,8 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
         <label class="f-label" for="qemail">Email</label>
         <input class="f-input" id="qemail" type="email" placeholder="you@email.com" autocomplete="email">
         <div class="f-err" id="qerr">Please add your name, phone, email and cargo.</div>
-        <button class="btn-primary" type="submit">Send quote request via WhatsApp</button>
-        <div class="q-ok" id="qok"><b>Sent.</b> We reply within 30 minutes (Mon–Sat 07:00–19:00). Keep WhatsApp open.</div>
+        <button class="btn-primary" type="submit">Request my quote</button>
+        <div class="q-ok" id="qok"><b>Sent.</b> You'll receive a confirmation email shortly — we reply within 30 minutes (Mon–Sat 07:00–19:00).</div>
       </form>
     </div>
   </div>
@@ -385,9 +385,6 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
       Name: $('qname').value.trim(), Phone: $('qphone').value.trim(), Email: $('qemail').value.trim()
     };
     sendToSheet('QUOTE', data);
-    const msg = `*QUOTE REQUEST — OMNI CARGO*%0A%0A` + Object.entries(data)
-      .map(([k, v]) => `*${k}:* ${encodeURIComponent(v)}`).join('%0A');
-    window.open(`https://wa.me/254790339935?text=${msg}`, '_blank', 'noopener');
     $('qok').style.display = 'block';
   });
 })();

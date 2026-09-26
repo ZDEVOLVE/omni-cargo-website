@@ -312,10 +312,10 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
             <div class="step-nav">
               <button class="btn-ghost" type="button" data-back="2">Back</button>
               <button class="btn-primary" type="submit" id="submitBtn">
-                Send booking via WhatsApp
+                Book shipment
               </button>
             </div>
-            <p style="font-size:13px;color:var(--text-faint);margin-top:16px">Opens WhatsApp with your booking pre-filled — nothing sends until you press send there.</p>
+            <p style="font-size:13px;color:var(--text-faint);margin-top:16px">We'll email you a confirmation as soon as you submit.</p>
           </div>
 
           <!-- SUCCESS -->
@@ -323,7 +323,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
             <div class="eyebrow">Request sent</div>
             <h3 class="big">Booking on its <em>way.</em></h3>
             <div class="sum" id="sumRows"></div>
-            <p class="note">We confirm your price and pickup window within <b style="color:var(--text)">30 minutes</b> (Mon–Sat 07:00–19:00). You'll get a tracking number at pickup — keep it.</p>
+            <p class="note">You'll receive a confirmation email shortly. We confirm your price and pickup window within <b style="color:var(--text)">30 minutes</b> (Mon–Sat 07:00–19:00).</p>
             <div class="row-cta">
               <a class="btn-ghost" href="index.html">Back to home</a>
               <button class="btn-primary" type="button" id="againBtn">Book another</button>
@@ -340,7 +340,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
         <div class="side-card">
           <h3>What happens next</h3>
           <ol class="nxt">
-            <li>Your booking lands on our dispatch WhatsApp instantly.</li>
+            <li>Your booking reaches our dispatch team instantly.</li>
             <li>We reply with a fixed price and pickup window — within 30 min.</li>
             <li>Crew arrives, loads and nets the cargo, you get a tracking number.</li>
             <li>You get SMS updates until it is signed for.</li>
@@ -478,9 +478,6 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
       Note: $('note').value.trim() || '—'
     };
     sendToSheet('BOOKING', data);
-    const msg = `*NEW BOOKING — OMNI CARGO*%0A%0A` + Object.entries(data)
-      .map(([k, v]) => `*${k}:* ${encodeURIComponent(v)}`).join('%0A');
-    window.open(`https://wa.me/254790339935?text=${msg}`, '_blank', 'noopener');
 
     // success state
     document.querySelectorAll('.step').forEach(s => s.classList.remove('on'));
