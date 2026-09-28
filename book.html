@@ -201,6 +201,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-cta">
+      <a class="btn-ghost" href="portal.html">Track</a>
       <a class="btn-primary" href="book.html">Book a Shipment</a>
       <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -215,6 +216,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
   <a href="faqs.html">FAQs</a>
   <a href="contact.html">Contact</a>
   <div class="mm-cta">
+    <a class="btn-ghost" href="portal.html">Track / Sign in</a>
     <a class="btn-primary" href="book.html">Book a Shipment</a>
     <a class="btn-whatsapp" href="https://wa.me/254790339935" target="_blank" rel="noopener">Chat on WhatsApp</a>
   </div>
@@ -293,6 +295,12 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
                 <label class="f-label" for="pieces">Number of pieces</label>
                 <input class="f-input" id="pieces" type="number" min="1" max="200" value="1">
               </div>
+            </div>
+            <label class="f-label">Approx. size (optional) — L × W × H in cm</label>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+              <input class="f-input" id="len" type="number" min="0" inputmode="numeric" placeholder="Length">
+              <input class="f-input" id="wid" type="number" min="0" inputmode="numeric" placeholder="Width">
+              <input class="f-input" id="hei" type="number" min="0" inputmode="numeric" placeholder="Height">
             </div>
             <label class="f-label" for="photo">Photo of the load (optional)</label>
             <label class="file-drop" id="photoDrop">
@@ -517,6 +525,9 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
       Date: $('pdate').value || 'ASAP',
       Cargo: $('cargo').value.trim(),
       Weight: $('weight').value.trim() || 'Not sure',
+      Length: $('len').value.trim(),
+      Width: $('wid').value.trim(),
+      Height: $('hei').value.trim(),
       Pieces: $('pieces').value,
       Name: $('name').value.trim(),
       Phone: $('phone').value.trim(),

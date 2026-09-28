@@ -194,6 +194,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-cta">
+      <a class="btn-ghost" href="portal.html">Track</a>
       <a class="btn-primary" href="book.html">Book a Shipment</a>
       <button class="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -208,6 +209,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
   <a href="faqs.html">FAQs</a>
   <a href="contact.html">Contact</a>
   <div class="mm-cta">
+    <a class="btn-ghost" href="portal.html">Track / Sign in</a>
     <a class="btn-primary" href="book.html">Book a Shipment</a>
     <a class="btn-whatsapp" href="https://wa.me/254790339935" target="_blank" rel="noopener">Chat on WhatsApp</a>
   </div>
@@ -311,6 +313,12 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
         </datalist>
         <label class="f-label" for="qcargo">What are we moving?</label>
         <input class="f-input" id="qcargo" placeholder="e.g. 10 cartons of shop stock">
+        <label class="f-label">Approx. size (optional) — L × W × H in cm</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+          <input class="f-input" id="qlen" type="number" min="0" inputmode="numeric" placeholder="Length">
+          <input class="f-input" id="qwid" type="number" min="0" inputmode="numeric" placeholder="Width">
+          <input class="f-input" id="qhei" type="number" min="0" inputmode="numeric" placeholder="Height">
+        </div>
         <label class="f-label" for="qphoto">Photo of the load (optional)</label>
         <label class="file-drop" id="qphotoDrop">
           <input type="file" id="qphoto" accept="image/*" hidden>
@@ -436,7 +444,9 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
     if (!ok) return;
     const data = {
       Route: $('qroute').value, Pickup: $('qpickup').value.trim(), Delivery: $('qdelivery').value.trim(),
-      Weight: $('qweight').value.trim() || 'Not sure', Cargo: $('qcargo').value.trim(),
+      Weight: $('qweight').value.trim() || 'Not sure',
+      Length: $('qlen').value.trim(), Width: $('qwid').value.trim(), Height: $('qhei').value.trim(),
+      Cargo: $('qcargo').value.trim(),
       Name: $('qname').value.trim(), Phone: $('qphone').value.trim(), Email: $('qemail').value.trim()
     };
     const photo = await readPhoto($('qphoto'), 1200, 0.72);
