@@ -245,18 +245,6 @@ section{position:relative}
 .spec-row b{font-family:'IBM Plex Mono',monospace;font-weight:500;color:var(--text);letter-spacing:.04em}
 .fleet-copy .btn-ghost{margin-top:30px}
 
-/* ============ TRACK TEASER ============ */
-#track-teaser{padding:var(--sect) 0;background:linear-gradient(180deg,var(--surface-2),var(--surface));border-top:1px solid var(--hairline);text-align:center}
-#track-teaser h2{font-size:var(--t-h2)}
-#track-teaser .sub{color:var(--text-mute);margin-top:14px}
-.track-bar{display:flex;gap:14px;max-width:640px;margin:38px auto 0}
-.track-input{flex:1;font:500 clamp(16px,2.4vw,22px) 'IBM Plex Mono',monospace;letter-spacing:.08em;color:var(--text);background:var(--surface-2);border:1px solid var(--hairline-hi);border-radius:14px;padding:18px 24px;min-width:0;transition:border-color .25s ease,box-shadow .25s ease}
-.track-input::placeholder{color:var(--text-faint)}
-.track-input:focus{outline:none;border-color:var(--accent);box-shadow:var(--accent-glow)}
-.track-hint{margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--text-faint)}
-.track-hint a{color:var(--text-mute);border-bottom:1px dashed var(--text-faint)}
-.track-hint a:hover{color:var(--accent)}
-
 /* ============ PRICING TEASER ============ */
 #pricing-teaser{padding:var(--sect) 0}
 .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
@@ -349,7 +337,6 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
-  .track-bar{flex-direction:column}
   .hero-ctas .btn-primary,.hero-ctas .btn-ghost{width:100%;justify-content:center}
   .foot-grid{grid-template-columns:1fr}
   .wa-float{right:16px;bottom:16px;width:54px;height:54px}
@@ -395,7 +382,6 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn-ghost" href="portal.html">Track</a>
       <a class="btn-primary" href="book.html">Book a Shipment</a>
       <button class="burger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -412,7 +398,6 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
   <a href="faqs.html">FAQs</a>
   <a href="contact.html">Contact</a>
   <div class="mm-cta">
-    <a class="btn-ghost" href="portal.html">Track / Sign in</a>
     <a class="btn-primary" href="book.html">Book a Shipment</a>
     <a class="btn-whatsapp" href="https://wa.me/254790339935" target="_blank" rel="noopener">Chat on WhatsApp</a>
   </div>
