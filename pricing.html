@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,700;10..72,800;10..72,900&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
 :root{
   --surface:#0A1626; --surface-2:#0F2035; --elevated:#142A44; --elevated-hi:#1B3554;
@@ -286,26 +287,27 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
           <option>Nairobi → Mombasa</option>
           <option>Within Nairobi</option>
         </select>
-        <div class="f-row">
-          <div>
-            <label class="f-label" for="qpickup">Pickup area</label>
-            <input class="f-input" id="qpickup" placeholder="e.g. Shimanzi, Mombasa">
-          </div>
-          <div>
-            <label class="f-label" for="qdelivery">Delivery area</label>
-            <input class="f-input" id="qdelivery" placeholder="e.g. Industrial Area, Nairobi">
-          </div>
-        </div>
+        <label class="f-label">Pickup location <span style="color:var(--accent)">*</span> <span style="color:var(--text-faint);text-transform:none;letter-spacing:0">— drop a pin, then add the details</span></label>
+        <div class="locpick" data-oc-loc="pickup"></div>
+        <label class="f-label" style="margin-top:8px">Delivery location <span style="color:var(--accent)">*</span> <span style="color:var(--text-faint);text-transform:none;letter-spacing:0">— drop a pin, then add the details</span></label>
+        <div class="locpick" data-oc-loc="delivery"></div>
         <label class="f-label" for="qweight">Estimated weight</label>
-        <input class="f-input" id="qweight" list="qweights" placeholder="Pick or type — e.g. 250 kg" autocomplete="off">
+        <input class="f-input" id="qweight" list="qweights" placeholder="Pick or type — e.g. 500 g, 5 kg, 2 tonnes" autocomplete="off">
         <datalist id="qweights">
-          <option value="Up to 50 kg"></option>
-          <option value="50 – 100 kg"></option>
-          <option value="100 – 300 kg"></option>
-          <option value="300 – 500 kg"></option>
-          <option value="500 – 1,000 kg"></option>
-          <option value="1 – 2 tonnes"></option>
-          <option value="2 – 5 tonnes"></option>
+          <option value="500 g"></option>
+          <option value="1 kg"></option>
+          <option value="2 kg"></option>
+          <option value="5 kg"></option>
+          <option value="10 kg"></option>
+          <option value="20 kg"></option>
+          <option value="50 kg"></option>
+          <option value="100 kg"></option>
+          <option value="250 kg"></option>
+          <option value="500 kg"></option>
+          <option value="750 kg"></option>
+          <option value="1 tonne"></option>
+          <option value="2 tonnes"></option>
+          <option value="5 tonnes"></option>
           <option value="Over 5 tonnes"></option>
           <option value="Not sure — advise me"></option>
         </datalist>
@@ -335,7 +337,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
         </div>
         <label class="f-label" for="qemail">Email</label>
         <input class="f-input" id="qemail" type="email" placeholder="you@email.com" autocomplete="email">
-        <div class="f-err" id="qerr">Please add your name, phone, email, cargo and size (L × W × H in cm).</div>
+        <div class="f-err" id="qerr">Please complete pickup &amp; delivery (road + area), size (L × W × H), cargo, name, phone and email.</div>
         <button class="btn-primary" type="submit">Request my quote</button>
         <div class="q-ok" id="qok"><b>Sent.</b> You'll receive a confirmation email shortly — we reply within 30 minutes (Mon–Sat 07:00–19:00).</div>
       </form>
@@ -386,6 +388,8 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
   <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1a13 13 0 0 1-1.5-.5 11.6 11.6 0 0 1-4.4-3.9 5 5 0 0 1-1-2.7c0-1.3.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.1c0 .2.1.4 0 .6l-.4.6-.4.5c-.1.2-.3.3-.1.6.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.2 2.1 1.3.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3 0 .2 0 .7-.2 1.2Z"/></svg>
 </a>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="assets/js/loc-picker.js"></script>
 <script>
 (() => {
   const $ = id => document.getElementById(id);
@@ -438,11 +442,16 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
     const phoneOk = /^(\+?254|0)?[17]\d{8}$/.test($('qphone').value.replace(/[\s-]/g, ''));
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('qemail').value.trim());
     const dimsOk = ['qlen', 'qwid', 'qhei'].every(id => Number($(id).value) > 0);
-    const ok = $('qcargo').value.trim().length > 2 && $('qname').value.trim() && phoneOk && emailOk && dimsOk;
+    const locOk = !!(window.OCLoc && OCLoc.complete('pickup') && OCLoc.complete('delivery'));
+    const ok = $('qcargo').value.trim().length > 2 && $('qname').value.trim() && phoneOk && emailOk && dimsOk && locOk;
     $('qerr').style.display = ok ? 'none' : 'block';
     if (!ok) return;
+    const pick = window.OCLoc ? OCLoc.read('pickup') : { address: '', coords: '' };
+    const drop = window.OCLoc ? OCLoc.read('delivery') : { address: '', coords: '' };
     const data = {
-      Route: $('qroute').value, Pickup: $('qpickup').value.trim(), Delivery: $('qdelivery').value.trim(),
+      Route: $('qroute').value,
+      Pickup: pick.address, 'Pickup Coords': pick.coords,
+      Delivery: drop.address, 'Delivery Coords': drop.coords,
       Weight: $('qweight').value.trim() || 'Not sure',
       Length: $('qlen').value.trim(), Width: $('qwid').value.trim(), Height: $('qhei').value.trim(),
       Cargo: $('qcargo').value.trim(),
