@@ -311,11 +311,11 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
         </datalist>
         <label class="f-label" for="qcargo">What are we moving?</label>
         <input class="f-input" id="qcargo" placeholder="e.g. 10 cartons of shop stock">
-        <label class="f-label">Approx. size (optional) — L × W × H in cm</label>
+        <label class="f-label">Cargo size — L × W × H in cm <span style="color:var(--accent)">*</span> <span style="color:var(--text-faint);text-transform:none;letter-spacing:0">(needed to price bulky loads fairly)</span></label>
         <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
-          <input class="f-input" id="qlen" type="number" min="0" inputmode="numeric" placeholder="Length">
-          <input class="f-input" id="qwid" type="number" min="0" inputmode="numeric" placeholder="Width">
-          <input class="f-input" id="qhei" type="number" min="0" inputmode="numeric" placeholder="Height">
+          <input class="f-input" id="qlen" type="number" min="1" inputmode="numeric" placeholder="Length" required>
+          <input class="f-input" id="qwid" type="number" min="1" inputmode="numeric" placeholder="Width" required>
+          <input class="f-input" id="qhei" type="number" min="1" inputmode="numeric" placeholder="Height" required>
         </div>
         <label class="f-label" for="qphoto">Photo of the load (optional)</label>
         <label class="file-drop" id="qphotoDrop">
@@ -335,7 +335,7 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
         </div>
         <label class="f-label" for="qemail">Email</label>
         <input class="f-input" id="qemail" type="email" placeholder="you@email.com" autocomplete="email">
-        <div class="f-err" id="qerr">Please add your name, phone, email and cargo.</div>
+        <div class="f-err" id="qerr">Please add your name, phone, email, cargo and size (L × W × H in cm).</div>
         <button class="btn-primary" type="submit">Request my quote</button>
         <div class="q-ok" id="qok"><b>Sent.</b> You'll receive a confirmation email shortly — we reply within 30 minutes (Mon–Sat 07:00–19:00).</div>
       </form>
@@ -437,7 +437,8 @@ footer{border-top:1px solid var(--hairline);background:#081020;padding:72px 0 34
     e.preventDefault();
     const phoneOk = /^(\+?254|0)?[17]\d{8}$/.test($('qphone').value.replace(/[\s-]/g, ''));
     const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('qemail').value.trim());
-    const ok = $('qcargo').value.trim().length > 2 && $('qname').value.trim() && phoneOk && emailOk;
+    const dimsOk = ['qlen', 'qwid', 'qhei'].every(id => Number($(id).value) > 0);
+    const ok = $('qcargo').value.trim().length > 2 && $('qname').value.trim() && phoneOk && emailOk && dimsOk;
     $('qerr').style.display = ok ? 'none' : 'block';
     if (!ok) return;
     const data = {
